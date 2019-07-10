@@ -1,0 +1,34 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "quotes": [
+            1,
+            "single"
+        ], //单引号
+        "no-console": 1, //不禁用console
+        "no-debugger": 1, //禁用debugger
+        "no-var": 1, //对var警告
+        "semi": 1, //不强制使用分号
+        "no-irregular-whitespace": 1, //不规则的空白不允许
+        "no-trailing-spaces": 1, //一行结束后面有空格就发出警告
+        "eol-last": 1, //文件以单一的换行符结束
+        "no-unused-vars": [
+            1,
+            {
+                "vars": "all",
+                "args": "after-used"
+            }
+        ], //不能有声明后未被使用的变量或参数
+    }
+}
