@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './App.css';
 // 相当于主文件
 class App extends Component {
 
@@ -10,7 +10,7 @@ class App extends Component {
     render () {
         return (
             <div>
-                aaa
+                aaa55
             </div>
         );
     }
