@@ -28,6 +28,16 @@ let dev = merge(config, {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    // 插入到html中
+                    'style-loader',
+                    // 用于处理css文件中 @import 和 url路径相关
+                    'css-loader'
+                ]
             }
         ]
     },

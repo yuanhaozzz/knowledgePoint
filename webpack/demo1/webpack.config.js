@@ -3,8 +3,11 @@ let path = require('path')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
+// 单独打包css
+let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+    mode: 'production',
     entry: {
         app: './src/index.js',
     },
@@ -12,17 +15,21 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkHush].js'
     },
-    devServer: {
-        contentBase: './dist',
-        hot: true
-    },
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     module: {
         rules: [
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // only enable hot in development
+                            hmr: process.env.NODE_ENV === 'development',
+                            // if hmr does not work, this is a forceful method.
+                            reloadAll: true,
+                        }
+                    },
                     'css-loader'
                 ]
             }
@@ -34,6 +41,11 @@ module.exports = {
             title: 'html'
         }),
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        // 单独抽离css
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[id].css'
+        }),
     ]
 }

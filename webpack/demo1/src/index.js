@@ -1,4 +1,5 @@
 
+import './index.css'
 function getComponent () {
     return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
         var element = document.createElement('div');
