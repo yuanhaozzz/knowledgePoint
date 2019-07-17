@@ -1,23 +1,18 @@
 import express from 'express';
-import { renderToString } from 'react-dom/server';
-import Home from './Home.js';
+import { render } from './utils';
 
 const app = express();
-const content = renderToString(<Home />);
-app.get('/', function (req, res) {
-    res.send(
-        `
-    <html>
-      <head>
-        <title>ssr</title>
-      </head>
-      <body>
-        <div id="root">${content}</div>
-      </body>
-    </html>
-   `
-    );
-})
+let fs = require('fs')
+let html = fs.readFileSync('dist/client/index.html', 'utf-8')
+
+app.use(express.static('dist'))
+
+//注意这里要换成*来匹配
+app.get('*', function (req, res) {
+    console.log(req.path)
+    res.send(html.replace('<!-- react-ssr -->', render(req)));
+});
+
 app.listen(3001, () => {
     console.log('listen:3001')
-})
+});
