@@ -4,11 +4,16 @@ import { Route } from 'react-router-dom'
 import Home from './src/home'
 import Login from './src/Login'
 
+import routes from './routes/config'
+
 export default function () {
     return (
         <Fragment>
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/Login" component={Login}></Route>
+            {
+                routes.map(routes => (
+                    <Route {...routes}></Route>
+                ))
+            }
         </Fragment>
     )
 }
