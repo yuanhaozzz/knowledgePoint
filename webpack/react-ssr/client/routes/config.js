@@ -1,21 +1,28 @@
-import Home from '../src/home'
+// import ImportComponent from '../component/common/ImportComponent'
+// let Home = ImportComponent(import('../src/Home'))
+// let Login = ImportComponent(import('../src/Login'))
 import Login from '../src/login'
 
-console.log(Home)
+async function a () {
+    let val = await (() => import('../src/Home'))
+    console.log(val(), '222222222222222')
+}
+
+a()
 
 export default [
     {
         path: '/',
-        component: Home,
+        component: Login,
         exact: true,
-        key: 'home',
-        loadData: Home.getInintalProps
+        key: 'login',
+        // loadData: Home.getInintalProps
     },
     {
         path: '/login',
         component: Login,
         key: 'login',
         exact: true,
-        loadData: Login.getInintalProps
+        // loadData: Login.getInintalProps
     }
 ]

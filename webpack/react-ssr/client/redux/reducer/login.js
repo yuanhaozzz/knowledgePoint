@@ -17,7 +17,6 @@ export default function (state = initialState, actions) {
                 payload
             };
         case TEST:
-            console.log(actions.payload, '222222222222222')
             return {
                 ...state,
                 ...actions.payload

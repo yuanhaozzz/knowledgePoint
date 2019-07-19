@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 
 class Login extends Component {
 
@@ -9,11 +8,12 @@ class Login extends Component {
     render () {
         return (
             <div>
-                Login
+                <button className="home-submit" onClick={this.handleButton}>按钮</button>
             </div>
         )
     }
 
 }
+
 
 export default Login

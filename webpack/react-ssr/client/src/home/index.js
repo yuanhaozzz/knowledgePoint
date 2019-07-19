@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
 import { Router } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { test } from '../../redux/actions'
+import { test, testAsync } from '../../redux/actions'
+
+import './home.css'
+
+import Login from '../login/index'
 
 class Home extends Component {
 
@@ -14,6 +17,9 @@ class Home extends Component {
     }
 
     componentDidMount () {
+        import(Router).then(res => {
+            console.log(res)
+        })
         const { dispatch, selectedPost, test, list } = this.props
     }
 
@@ -22,21 +28,19 @@ class Home extends Component {
     }
 
     loadData = e => {
-        console.log(222)
     }
 
     render () {
         let { list } = this.props
-        console.log(list, '111111111111111')
         return (
             <div>
                 Home
                 {
-                    list.map(item => (
-                        <div>{item}</div>
+                    list.map((item, index) => (
+                        <div key={index}>{item}</div>
                     ))
                 }
-                <button onClick={this.handleButton}>按钮</button>
+                <button className="home-submit" onClick={this.handleButton}>按钮</button>
             </div>
         )
     }
@@ -47,7 +51,6 @@ let mapStateToProps = state => {
     return {
         list: state.login.list
     }
-    console.log(state)
 }
 
 let home = connect(
@@ -56,7 +59,7 @@ let home = connect(
 )(Home)
 
 home.getInintalProps = store => {
-    store.dispatch(test([1, 2, 3, 45, 6]))
+    return store.dispatch(testAsync([1, 2, 3, 45, 6]))
     // console.log(store.dispatch, '==========================')
 }
 

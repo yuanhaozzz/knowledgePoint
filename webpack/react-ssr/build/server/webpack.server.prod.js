@@ -5,9 +5,9 @@ let path = require('path')
 const nodeExternal = require('webpack-node-externals')
 module.exports = merge(baseConfig, {
     target: 'node',
-    mode: 'development',
+    mode: 'production',
     entry: {
-        server: path.resolve(__dirname, '../../server.js')
+        server: path.resolve(__dirname, '../../server/server.js')
     },
     // 负责检测所有引入不得node的核心模块，并且通知webpack不需要将核心代码打入到server.js 文件中去
     externals: [nodeExternal()],

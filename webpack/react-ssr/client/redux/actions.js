@@ -70,11 +70,19 @@ export function test (list) {
     }
 }
 
-export function testAsync (list) {
-    return {
-        type: 'TEST_ASYNC',
-        payload: {
-            list
-        }
+function testPromise () {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('请求中')
+            resolve([33, 33, 26662, 22])
+        }, 1000);
+    })
+}
+
+export function testAsync () {
+    return (dispatch, getState) => {
+        return testPromise().then(res => {
+            dispatch(test(res))
+        })
     }
 }

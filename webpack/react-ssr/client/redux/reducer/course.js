@@ -16,7 +16,6 @@ export default function (state = initialState, actions) {
                 ...payload
             };
         case SHOW_DIALOG:
-            console.log(actions.payload);
             return {
                 ...state,
                 ...actions.payload
