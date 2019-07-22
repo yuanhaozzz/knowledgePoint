@@ -21,6 +21,13 @@
     "plugins": [
         // 该插件主要减少代码打包体积，避免重复引入
         "@babel/plugin-transform-runtime",
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        [
+            "import", {
+              "libraryName": "antd",
+              "libraryDirectory": "es",
+              "style": "css"
+            }
+        ]
     ]
 }

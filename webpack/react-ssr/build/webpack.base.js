@@ -31,7 +31,34 @@ module.exports = {
                             reloadAll: true
                         }
                     },
-                    'css-loader'
+                    {
+                        loader: 'css-loader',
+                    }
+                ]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                            reloadAll: true
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    'postcss-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                        //     javascriptEnabled: true,
+                        //     modifyVars: {
+                        //         'primary-color': 'red',
+                        //    },
+                        }
+                    }
                 ]
             },
             {

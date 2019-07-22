@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
 import { Route } from 'react-router-dom'
 
-import routes from './routes/config'
+import clientRoute from './routes/config'
 
 export default function () {
     return (
         <Fragment>
             {
-                routes.map(routes => (
+                clientRoute.map(routes => (
                     <Route {...routes}></Route>
                 ))
             }

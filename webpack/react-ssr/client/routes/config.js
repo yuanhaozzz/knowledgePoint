@@ -1,21 +1,43 @@
 // import ImportComponent from '../component/common/ImportComponent'
-// let Home = ImportComponent(import('../src/Home'))
-// let Login = ImportComponent(import('../src/Login'))
+// let HomeDynmic = ImportComponent(import('../src/Home'))
+// let LoginDynmic = ImportComponent(import('../src/Login'))
+
 import Login from '../src/login'
+import Home from '../src/Home'
 
-async function a () {
-    let val = await (() => import('../src/Home'))
-    console.log(val(), '222222222222222')
-}
+// async function a () {
+//     debugger
+//     let val = await (import('../src/Home'))
+//     console.log(val(), '222222222222222')
+// }
 
-a()
+// a()
+
+// 按需引入问题？？？
+
+// export let clientRoute = [
+//     {
+//         path: '/',
+//         component: HomeDynmic,
+//         exact: true,
+//         key: 'Home',
+//         // loadData: Home.getInintalProps
+//     },
+//     {
+//         path: '/login',
+//         component: LoginDynmic,
+//         key: 'login',
+//         exact: true,
+//         // loadData: Login.getInintalProps
+//     }
+// ]
 
 export default [
     {
         path: '/',
-        component: Login,
+        component: Home,
         exact: true,
-        key: 'login',
+        key: 'Home',
         // loadData: Home.getInintalProps
     },
     {

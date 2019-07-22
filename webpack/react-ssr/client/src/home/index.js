@@ -1,8 +1,11 @@
 import { Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { test, testAsync } from '../../redux/actions'
+import React, { Component } from 'react'
+
 
 import './home.css'
+
 
 import Login from '../login/index'
 
@@ -17,9 +20,6 @@ class Home extends Component {
     }
 
     componentDidMount () {
-        import(Router).then(res => {
-            console.log(res)
-        })
         const { dispatch, selectedPost, test, list } = this.props
     }
 
@@ -33,14 +33,13 @@ class Home extends Component {
     render () {
         let { list } = this.props
         return (
-            <div>
-                Home
+            <div>222大叔大婶啊阿萨德
                 {
                     list.map((item, index) => (
                         <div key={index}>{item}</div>
                     ))
                 }
-                <button className="home-submit" onClick={this.handleButton}>按钮</button>
+                <button className="home-submit" onClick={this.handleButton}>按钮bbbbbbbbbbbbaaaa</button>
             </div>
         )
     }

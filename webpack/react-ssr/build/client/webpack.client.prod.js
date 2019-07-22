@@ -10,6 +10,8 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 压缩图片 在尽可能小的情况下 保持质量
 let ImageminPlugin = require('imagemin-webpack-plugin').default;
+// 打包分析
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 let _path = _path => path.resolve(__dirname, _path)
 
 module.exports = merge(config, {
@@ -23,10 +25,14 @@ module.exports = merge(config, {
             'react-router',
             'react-router-dom',
             'react-redux',
-            'redux',
-
+            'redux'
         ]
     },
+    // resolve: {
+    //     alias: {
+    //         '@ant-design/icons/lib/dist$': path.resolve(__dirname, '../../client/src'),
+    //     }
+    // },
     devtool: 'source-map',
     // 外部引入  在指定后  需要在html中引入该资源
     // externals
@@ -89,6 +95,7 @@ module.exports = merge(config, {
             pngquant: {//图片质量
                 quality: '95-100'
             }
-        })
+        }),
+        // new BundleAnalyzerPlugin()
     ]
 })
