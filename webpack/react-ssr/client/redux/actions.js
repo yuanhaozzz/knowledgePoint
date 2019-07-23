@@ -1,5 +1,6 @@
 
-import { SEND_COURSE_DETAIL, LOGIN, SHOW_DIALOG, SELECT_STUDENT, HIDE_DIALOG, TEST } from './actionTypes';
+import { SEND_COURSE_DETAIL, LOGIN, SHOW_DIALOG, SELECT_STUDENT, HIDE_DIALOG, TEST, COURSE_LIST } from './actionTypes';
+import { CourseApi } from '../api/index';
 
 // 课程信息
 export function sendCourseDetail (courseData) {
@@ -51,6 +52,24 @@ export function setStudent (studentInfo) {
     };
 }
 
+export function getCourseList (data) {
+    return {
+        type: COURSE_LIST,
+        payload: {
+            ...data
+        }
+    };
+}
+
+
+export function awaitCourseList (params) {
+    return (dispatch) => {
+        return CourseApi.getList('calendar', params).then(res => {
+            dispatch(getCourseList({ courseList: res['calendarList'] }));
+        });
+    };
+}
+
 // // 测试
 // export function test () {
 //     return dispatch => {
@@ -67,22 +86,23 @@ export function test (list) {
         payload: {
             list
         }
-    }
+    };
 }
 
-function testPromise () {
+function testPromise (options) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log('请求中')
-            resolve([33, 33, 26662, 22])
+            console.log('请求中');
+            resolve([33, 33, 26662, 22]);
         }, 1000);
-    })
+    });
 }
 
 export function testAsync () {
     return (dispatch, getState) => {
         return testPromise().then(res => {
-            dispatch(test(res))
-        })
-    }
+            dispatch(test(res));
+        });
+    };
 }
+

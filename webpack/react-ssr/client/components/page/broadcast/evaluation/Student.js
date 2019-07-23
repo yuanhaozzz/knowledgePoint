@@ -1,0 +1,145 @@
+import React, { Component } from 'react';
+import { Rate, Input, Button, message } from 'antd';
+
+const { TextArea } = Input;
+
+class Student extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            textArea: '',
+            loading: false,
+            starTeacher: 0,
+            starCourse: 0,
+            starBroadcast: 0
+        };
+    }
+
+    changeTextArea = (e) => {
+        this.setState({
+            textArea: e.target.value
+        });
+    }
+
+    handleSubmit = e => {
+        if (this.state.starTeacher === 0 || this.state.starCourse === 0 || this.state.starBroadcast === 0) {
+            message.warning('请对每一项进行打分，您的支持是我们最大的动力！');
+            return;
+        }
+        let params = {
+            starTeacher: this.state.starTeacher,
+            starCourse: this.state.starCourse,
+            starBroadcast: this.state.starBroadcast,
+            textArea: this.state.textArea,
+        };
+        console.log(params);
+        window.webAdapter.closeWindow();
+
+    }
+    /**
+     * 点击星星
+     *  */
+    changeStarTeacher = star => {
+        this.setState({
+            starTeacher: star
+        });
+    }
+    changeStarCourse = star => {
+        this.setState({
+            starCourse: star
+        });
+    }
+    changeStarBroadcast = star => {
+        this.setState({
+            starBroadcast: star
+        });
+    }
+
+    render () {
+        return (
+            <div className='student'>
+                <div className='student-header'>
+                    课后评价
+                </div>
+                <section className='student-content'>
+                    <ul>
+                        <li className='student-content-info'>
+                            <div className='info-layout'>
+                                <p>奖励数： 1</p>
+                                <p>排名：1</p>
+                                <p>课程名称：奥术大师</p>
+                                <p>授课老师：额阿达是</p>
+                            </div>
+                            <div>上课时间：2019-09-09 09:12:12 ~ 2019-09-09 09:12:12</div>
+                        </li>
+                        <li className='student-content-star'>
+                            <div>
+                                老师能力：<Rate onChange={this.changeStarTeacher} />
+                            </div>
+                            <div>
+                                课程内容：<Rate onChange={this.changeStarCourse} />
+                            </div>
+                            <div>
+                                直播质量：<Rate onChange={this.changeStarBroadcast} />
+                            </div>
+                        </li>
+                    </ul>
+                    <div className='student-content-feedback'>建议反馈</div>
+                    <TextArea placeholder='请在这里填写您遇到的问题或建议，您的支持是我们最大的动力' onChange={this.changeTextArea} value={this.state.textArea} autosize={{ minRows: 4, maxRows: 10 }}></TextArea>
+                    <div className='student-content-submit'>
+                        <Button type='primary' block size='large' loading={this.state.loading} onClick={this.handleSubmit}>
+                            提交
+                        </Button>
+                    </div>
+                </section>
+                <style jsx>{`
+                    .student{
+                        
+                    }
+                    .student-header{
+                        border-bottom: 1px solid #ddd;
+                        height: 70px;
+                        text-align: center;
+                        line-height: 70px;
+                        font-size: 20px;
+                        color: #000;
+                    }
+                    .student-content{
+                        padding: 0px 60px;
+                    }
+                    .student-content li{
+                        padding: 25px 0;
+                        border-bottom: 1px solid #ddd;
+                        color: #000;
+                    }
+                    .info-layout{
+                        display: flex;
+                        justify-content: flex-start;
+                        flex-wrap: wrap;
+                    }
+                    .info-layout p{
+                        width: 50%;
+                        margin-bottom: 10px;
+                    }
+                    .student-content-feedback{
+                        margin-top: 30px;
+                        margin-bottom: 20px;
+                    }
+                    .student-content-submit{
+                        margin: 30px 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .student-content-submit{
+                        width: 40%;
+                        margin: 30px auto;
+                    }
+                `}</style>
+            </div>
+        );
+    }
+}
+
+export default Student;

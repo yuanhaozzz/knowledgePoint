@@ -1,10 +1,11 @@
-import { SEND_COURSE_DETAIL, SHOW_DIALOG, HIDE_DIALOG, SELECT_STUDENT } from '../actionTypes';
+import { SEND_COURSE_DETAIL, SHOW_DIALOG, HIDE_DIALOG, SELECT_STUDENT, COURSE_LIST } from '../actionTypes';
 
 // 定义store 状态
 let initialState = {
     courseData: {},
     status: false,
-    studentInfo: {}
+    studentInfo: {},
+    courseList: {}
 };
 
 export default function (state = initialState, actions) {
@@ -26,6 +27,11 @@ export default function (state = initialState, actions) {
                 ...actions.payload
             };
         case SELECT_STUDENT:
+            return {
+                ...state,
+                ...actions.payload
+            };
+        case COURSE_LIST:
             return {
                 ...state,
                 ...actions.payload

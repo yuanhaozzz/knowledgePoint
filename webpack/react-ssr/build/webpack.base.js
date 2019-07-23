@@ -1,10 +1,10 @@
-let path = require('path')
+let path = require('path');
 // 抽取css为单个文件
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // copy static目录到dist目录下
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-let webpack = require('webpack')
+let webpack = require('webpack');
 
 module.exports = {
     resolve: {
@@ -53,10 +53,10 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options: {
-                        //     javascriptEnabled: true,
-                        //     modifyVars: {
-                        //         'primary-color': 'red',
-                        //    },
+                            //     javascriptEnabled: true,
+                            //     modifyVars: {
+                            //         'primary-color': 'red',
+                            //    },
                         }
                     }
                 ]
@@ -90,4 +90,4 @@ module.exports = {
             Component: ['react', 'Component'] // 导出react模块中的Component
         })
     ]
-}
+};

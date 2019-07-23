@@ -2,8 +2,8 @@
 // let HomeDynmic = ImportComponent(import('../src/Home'))
 // let LoginDynmic = ImportComponent(import('../src/Login'))
 
-import Login from '../src/login'
-import Home from '../src/Home'
+import Login from '../src/broadcast/login';
+import Course from '../src/broadcast/course';
 
 // async function a () {
 //     debugger
@@ -35,16 +35,22 @@ import Home from '../src/Home'
 export default [
     {
         path: '/',
-        component: Home,
+        component: Login,
         exact: true,
         key: 'Home',
-        // loadData: Home.getInintalProps
     },
     {
-        path: '/login',
+        path: '/broadcast/login',
         component: Login,
         key: 'login',
         exact: true,
         // loadData: Login.getInintalProps
+    },
+    {
+        path: '/broadcast/course',
+        component: Course,
+        key: 'course',
+        exact: true,
+        loadData: Course.getInintalProps
     }
-]
+];

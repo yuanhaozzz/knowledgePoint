@@ -8,18 +8,19 @@ let initialState = {
 
 
 export default function (state = initialState, actions) {
+    console.log(actions, '===============asdasdas');
     switch (actions.type) {
         case LOGIN:
             // eslint-disable-next-line no-case-declarations
             let { payload } = actions;
             return {
                 ...state,
-                payload
+                ...(actions.payload)
             };
         case TEST:
             return {
                 ...state,
-                ...actions.payload
+                ...(actions.payload)
             };
         default:
             return state;

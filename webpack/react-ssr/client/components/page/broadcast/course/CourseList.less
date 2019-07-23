@@ -1,0 +1,86 @@
+    .list-item{
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    .list-item li{
+        width: 50%;
+        height: 130px;
+        background-color: #fff;
+        border: 2px solid #ececec;
+        border-left: 2px solid transparent;
+        border-top: 2px solid transparent;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .list-item li:hover{
+        border: 2px solid #a6d4f5;
+    }
+   
+    .list-item-title{
+        color: #000;
+        margin-bottom: 5px;
+    }
+    .list-item-type, .list-item-name{
+        color: #878787;
+    }
+    .list-item-name{
+        font-size: 12px;
+        margin-top: 3px;
+    }
+    .list-item-status{
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        color: #fff;
+        transform: rotate(45deg);
+        position: absolute;
+        right:-30px;
+        top: -30px;
+        z-index: 10;
+    }
+    .list-item-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        margin-top: 10px;
+    }
+    .list-item-button button{
+        border: none;
+        outline: none;
+        background-color: #fff;
+        border: 1px solid #e8e8e8;
+        width: 90px;
+        border-radius: 90px;
+        height: 30px;
+        color: #7c86a2;
+        cursor: pointer;
+    }
+    .list-item-button button:hover{
+        background-color: #83bdff;
+        color: #fff;
+    }
+
+.course-header{
+    height: 60px;
+    background-color: #f4f6f8;
+    justify-content: flex-start !important;
+    color: #878787;
+    font-size: 20px;
+}
+
+.no-data{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
