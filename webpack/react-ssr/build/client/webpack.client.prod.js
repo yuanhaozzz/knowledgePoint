@@ -10,6 +10,8 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 压缩图片 在尽可能小的情况下 保持质量
 let ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 // 打包分析
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 let _path = _path => path.resolve(__dirname, _path);
@@ -96,6 +98,9 @@ module.exports = merge(config, {
                 quality: '95-100'
             }
         }),
+        new CopyWebpackPlugin([
+            { from: path.resolve(__dirname, '../../static'), to: path.resolve(__dirname, '../../dist/h5/live/static'), ignore: ['.*'] }
+        ]),
         // new BundleAnalyzerPlugin()
     ]
 });

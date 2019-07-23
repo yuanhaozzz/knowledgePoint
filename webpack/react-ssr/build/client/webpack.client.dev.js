@@ -4,6 +4,8 @@ let path = require('path');
 let webpack = require('webpack');
 // 根据模板生成打包后的html 自动引入打包后的资源路径
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 // 删除dist目录
 let { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // 打包分析
@@ -59,6 +61,9 @@ module.exports = merge(config, {
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         // Use NoErrorsPlugin for webpack 1.x
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new CopyWebpackPlugin([
+            { from: path.resolve(__dirname, '../static'), to: path.resolve(__dirname, '../dist/static'), ignore: ['.*'] }
+        ]),
     ]
 });

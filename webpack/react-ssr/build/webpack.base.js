@@ -2,7 +2,6 @@ let path = require('path');
 // 抽取css为单个文件
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // copy static目录到dist目录下
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let webpack = require('webpack');
 
@@ -80,9 +79,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/[name].css'
         }),
-        new CopyWebpackPlugin([
-            { from: path.resolve(__dirname, '../static'), to: path.resolve(__dirname, '../dist/static'), ignore: ['.*'] }
-        ]),
+
         // 提供全局变量，这样不需要每次导入   import React from 'react'   等等！
         new webpack.ProvidePlugin({
             React: 'react',
