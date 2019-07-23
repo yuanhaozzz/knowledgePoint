@@ -1,9 +1,9 @@
-let merge = require('webpack-merge')
-let config = require('../webpack.base.js')
-let path = require('path')
-let webpack = require('webpack')
+let merge = require('webpack-merge');
+let config = require('../webpack.base.js');
+let path = require('path');
+let webpack = require('webpack');
 // 根据模板生成打包后的html 自动引入打包后的资源路径
-let HtmlWebpackPlugin = require('html-webpack-plugin')
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 // 删除dist目录
 // let { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // 压缩js
@@ -12,7 +12,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 let ImageminPlugin = require('imagemin-webpack-plugin').default;
 // 打包分析
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-let _path = _path => path.resolve(__dirname, _path)
+let _path = _path => path.resolve(__dirname, _path);
 
 module.exports = merge(config, {
     mode: 'production',
@@ -37,10 +37,10 @@ module.exports = merge(config, {
     // 外部引入  在指定后  需要在html中引入该资源
     // externals
     output: {
-        path: _path('../../dist/client'),
+        path: _path('../../dist/h5/live'),
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',
-        publicPath: '/client'
+        publicPath: '/h5/live'
     },
     optimization: {
         minimize: true,
@@ -63,7 +63,7 @@ module.exports = merge(config, {
                 },
                 common: {// ‘src/js’ 下的js文件
                     chunks: "all",
-                    test: /[\\/]src[\\/]js[\\/]/,//也可以值文件/[\\/]src[\\/]js[\\/].*\.js/
+                    test: /[\\/]src[\\/]js[\\/]/, //也可以值文件/[\\/]src[\\/]js[\\/].*\.js/
                     name: "common", //生成文件名，依据output规则
                     minChunks: 2,
                     maxInitialRequests: 5,
@@ -98,4 +98,4 @@ module.exports = merge(config, {
         }),
         // new BundleAnalyzerPlugin()
     ]
-})
+});

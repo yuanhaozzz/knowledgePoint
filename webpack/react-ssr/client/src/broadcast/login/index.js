@@ -128,7 +128,6 @@ class Phone extends Component {
                     this.setState({
                         interval: setInterval(() => {
                             this.setState((state, props) => {
-                                console.log(state, props);
                                 return {
                                     number: --state.number
                                 };
@@ -329,14 +328,8 @@ class Login extends Component {
                         loginName: options.loginName,
                         password: options.password
                     }));
-
-                    console.log({
-                        loginName: options.loginName,
-                        password: options.password
-                    });
-                    console.log(JSON.stringify(userInfo));
                     // window.WCRClassRoom.setUser(JSON.stringify(userInfo));
-                    this.props.history.push('/broadcast/course');
+                    this.props.history.push('/h5/live/broadcast/course');
                 }).catch(err => {
                     this.setState({
                         loading: false

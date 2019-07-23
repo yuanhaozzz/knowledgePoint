@@ -40,14 +40,14 @@ export default [
         key: 'Home',
     },
     {
-        path: '/broadcast/login',
+        path: '/h5/live/broadcast/login',
         component: Login,
         key: 'login',
         exact: true,
         // loadData: Login.getInintalProps
     },
     {
-        path: '/broadcast/course',
+        path: '/h5/live/broadcast/course',
         component: Course,
         key: 'course',
         exact: true,

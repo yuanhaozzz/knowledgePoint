@@ -14,7 +14,7 @@ const app = express();
 const config = require('../build/client/webpack.client.dev');
 const compiler = webpack(config);
 var cookieParser = require('cookie-parser');
-let html = fs.readFileSync('dist/client/index.html', 'utf-8');
+let html = fs.readFileSync('dist/h5/live/index.html', 'utf-8');
 
 let dev = process.env.NODE_ENV === 'development';
 console.log(dev);
