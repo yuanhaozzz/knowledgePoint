@@ -8,7 +8,6 @@ let initialState = {
 
 
 export default function (state = initialState, actions) {
-    console.log(actions, '===============asdasdas');
     switch (actions.type) {
         case LOGIN:
             // eslint-disable-next-line no-case-declarations

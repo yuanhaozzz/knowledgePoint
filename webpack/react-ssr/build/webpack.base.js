@@ -12,7 +12,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -32,7 +32,8 @@ module.exports = {
                     },
                     {
                         loader: 'css-loader',
-                    }
+                    },
+                    'postcss-loader'
                 ]
             },
             {
@@ -69,9 +70,6 @@ module.exports = {
                         name: 'static/images/[name]-picf.[ext]'
                     }
                 }]
-            }, {
-                test: /\.jsx$/,
-                loader: 'babel-loader'
             }
         ]
     },

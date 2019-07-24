@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { UserApi } from '../../../api/index';
 import { setCookie, getPlatform, setUuid } from '../../../utils/common';
-import './login.less';
+import './login.css';
 
 
 class Account extends Component {
@@ -328,7 +328,7 @@ class Login extends Component {
                         loginName: options.loginName,
                         password: options.password
                     }));
-                    // window.WCRClassRoom.setUser(JSON.stringify(userInfo));
+                    window.WCRClassRoom.setUser(JSON.stringify(userInfo));
                     this.props.history.push('/h5/live/broadcast/course');
                 }).catch(err => {
                     this.setState({

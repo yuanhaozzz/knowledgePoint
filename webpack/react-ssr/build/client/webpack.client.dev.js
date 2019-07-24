@@ -17,7 +17,7 @@ module.exports = merge(config, {
     entry: {
         // polyfill 兼容低版本  试试不加 因为在preset-env中 已经制定usebuiltInt
         // webpack-hot-middleware 热更新
-        app: ['webpack-hot-middleware/client?noInfo=true&reload=true', _path('../../client/main.js')]
+        app: ["@babel/polyfill", _path('../../client/main.js')]
     },
 
     devtool: 'inline-source-map',

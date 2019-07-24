@@ -1,6 +1,6 @@
 // let prefix = process.env.NODE_ENV === 'production' ? '' : 'alpha';
-let prefix = 'alpha';
-let BASE_API = 'alpha';
+let prefix = 'rc';
+let BASE_API = '';
 switch (prefix) {
     case 'dev':
         BASE_API = 'http://dev-api-mp.szy.net/proxy/mallAdmin';
@@ -9,7 +9,7 @@ switch (prefix) {
         BASE_API = 'http://dev.beiwaiguoji.com/api';
         break;
     case 'rc':
-        BASE_API = 'http://rc-api-mp.szy.cn/proxy/mallAdmin';
+        BASE_API = 'http://pre.beiwaiguoji.com/api';
         break;
     default:
         BASE_API = 'http://api-mp.szy.cn/proxy/mallAdmin';

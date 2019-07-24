@@ -68,7 +68,8 @@ class Course extends Component {
         console.log(this.props.courseListStore);
         console.log(this.props.userInfo, '2');
         window.resizeTo(1080, 650);
-        this.checkTodayCourse(+new Date(this.state.currentDate));
+        this.handleUserId();
+        // this.checkTodayCourse(+new Date(this.state.currentDate));
         this.setState({
             // 刷新接口调通后 使用setTimeout
             // interval: setTimeout(() => {
@@ -100,6 +101,17 @@ class Course extends Component {
     }
 
     /**
+     * 处理userId
+     */
+    handleUserId = e => {
+        if (this.props.userInfo.subUserInfoVoList.length > 0) {
+            this.getCourseList(this.state.studentId || arrayFindTo(this.props.userInfo.subUserInfoVoList, 'select', true).userId);
+        } else {
+            this.getCourseList(this.props.userInfo.userId);
+        }
+    }
+
+    /**
      * 选择日期时触发
      * @param {string} date  拼接的年月
      */
@@ -110,12 +122,9 @@ class Course extends Component {
             state.currentDate = yearMonth;
             state.yearMonth = yearMonth;
             state.changeDate = changeDate;
-            if (this.props.userInfo.subUserInfoVoList.length > 0) {
-                this.getCourseList(this.state.studentId || arrayFindTo(this.props.userInfo.subUserInfoVoList, 'select', true).userId);
-            } else {
-                this.getCourseList(this.props.userInfo.userId);
-            }
+            this.handleUserId();
         });
+
     }
 
     /**
@@ -167,16 +176,16 @@ class Course extends Component {
      * 显示课程
      */
     showLesson = () => {
-        let { courseListStore } = this.props;
+        let { courseDataStore } = this.props;
         let info = {
             lesson: 0,
             lessonLength: 0
         };
-        if (Object.keys(courseListStore).length < 1) {
+        if (Object.keys(courseDataStore).length < 1) {
             return info;
         }
-        info.lesson = courseListStore.courseList.length;
-        info.lessonLength = courseListStore.courseList.filter(item => (item.status !== 1 && item.status !== 2)).length;
+        info.lesson = courseDataStore.courseList.length;
+        info.lessonLength = courseDataStore.courseList.filter(item => (item.status !== 1 && item.status !== 2)).length;
         return info;
     }
 
@@ -223,6 +232,8 @@ let courseComponent = connect(
 
 courseComponent.getInintalProps = (store, cookie) => {
     let userInfo = JSON.parse(cookie.userInfo);
+    console.log(typeof userInfo, 'router----------------------');
+    console.log(userInfo, 'router----------------------');
     // 写入store
     store.dispatch(setUserInfo({ userInfo }));
     let params = {
@@ -235,6 +246,7 @@ courseComponent.getInintalProps = (store, cookie) => {
     } else {
         params.subUserId = userInfo.userId;
     }
+    console.log(params, '----------------2');
     return store.dispatch(awaitCourseList(params));
 };
 

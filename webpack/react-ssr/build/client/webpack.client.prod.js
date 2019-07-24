@@ -20,7 +20,7 @@ module.exports = merge(config, {
     mode: 'production',
     entry: {
         // polyfill 兼容低版本  试试不加 因为在preset-env中 已经制定usebuiltInt
-        app: _path('../../client/main.js'),
+        app: ["@babel/polyfill", _path('../../client/main.js')],
         vendor: [
             'react',
             'react-dom',
@@ -101,6 +101,8 @@ module.exports = merge(config, {
         new CopyWebpackPlugin([
             { from: path.resolve(__dirname, '../../static'), to: path.resolve(__dirname, '../../dist/h5/live/static'), ignore: ['.*'] }
         ]),
-        // new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({
+            analyzerPort: 8889
+        })
     ]
 });

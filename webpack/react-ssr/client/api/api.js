@@ -49,11 +49,13 @@ const API = {
                 if (returnCode === 0) {
                     resolve(res.data.data);
                 } else {
+                    console.log(res, '---------------------12');
                     message.error(res.data.status.message);
                     reject(res.data.message);
                 }
             }).catch((err, errType) => {
-                message.error(err.message);
+                console.log(err, '-------------------err');
+                // message.error(err.message);
                 reject(err, errType);
             });
         });

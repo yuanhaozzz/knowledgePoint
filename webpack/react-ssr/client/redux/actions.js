@@ -53,6 +53,7 @@ export function setStudent (studentInfo) {
 }
 
 export function getCourseList (data) {
+    console.log(data, '---------------------------a');
     return {
         type: COURSE_LIST,
         payload: {
@@ -92,7 +93,6 @@ export function test (list) {
 function testPromise (options) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log('请求中');
             resolve([33, 33, 26662, 22]);
         }, 1000);
     });
