@@ -53,7 +53,6 @@ export function setStudent (studentInfo) {
 }
 
 export function getCourseList (data) {
-    console.log(data, '---------------------------a');
     return {
         type: COURSE_LIST,
         payload: {

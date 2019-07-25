@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { UserApi } from '../../../api/index';
 import { setCookie, getPlatform, setUuid } from '../../../utils/common';
-import './login.css';
+import './login.less';
 
 
 class Account extends Component {
@@ -161,7 +161,6 @@ class Phone extends Component {
      * 验证手机号码
      */
     validatorPhone = (rule, value, callback) => {
-        console.log(value, '---');
         let reg = /^1[3456789]\d{9}$/;
         if (value.length === 0) {
             callback('请输入手机号码');
@@ -229,7 +228,6 @@ class Login extends Component {
             info: JSON.parse(localStorage.getItem('info')) || {},
             uuid: localStorage.getItem('uuid') ? localStorage.getItem('uuid') : setUuid()
         });
-        console.log(localStorage.getItem('info'));
     }
 
     /**
@@ -328,6 +326,7 @@ class Login extends Component {
                         loginName: options.loginName,
                         password: options.password
                     }));
+                    console.log(JSON.stringify(userInfo));
                     window.WCRClassRoom.setUser(JSON.stringify(userInfo));
                     this.props.history.push('/h5/live/broadcast/course');
                 }).catch(err => {

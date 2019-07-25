@@ -19,6 +19,7 @@ function CourseHeader () {
 
 function ListItem (props) {
     let { courseData = {}, userInfo, clearInterval } = props;
+    console.log(courseData, '2222222222222222222-');
     /**
      * 返回教室类型
      * @param {number | string} scenario 区分教室类型 0 1v1  7 小班课  2 大班课
@@ -145,15 +146,15 @@ function ListItem (props) {
             } else {
                 userInfoParam.subUserId = userInfo.userId;
             }
-            console.log(JSON.stringify(userInfoParam));
+            console.log(JSON.stringify(params), 'aaaaa');
             // 进入教室  
             WCRClassRoom.joinClassRoom(JSON.stringify(params), (result) => {
                 // 回调函数
                 afterJoinClassroomCallback(result, item, userInfoParam);
             });
+        } else {
+            Message.warning(`该课程${'已失效'}`);
         }
-        Message.warning(`该课程${已失效}`);
-
     }
 
     /**
@@ -203,12 +204,11 @@ function ListItem (props) {
      * @param {*} content.body      客户端回调参数
      */
     function afterJoinClassroomCallback (content, course, userInfoParam) {
-
+        alert(content["notify"]);
         if (content["notify"] === "startClass") {
             window.WCRClassRoom.web_log(JSON.stringify(content));
             // 清除定时器
             console.log('点击上课按钮');
-            console.log(userInfoParam.subUserId);
             let params = {
                 token: userInfoParam.token,
                 subUserId: userInfoParam.subUserId,
@@ -263,7 +263,7 @@ function ListItem (props) {
                 });
             });
         } else if (content["notify"] === "enterClassRoom") {
-            clearInterval();
+            // clearInterval();
             console.log('进入教室');
             //进入教室的回调，课表页收到此回调后，可以将类似loading的过程停止
             WCRClassRoom.web_log(JSON.stringify(content));
@@ -281,7 +281,6 @@ function ListItem (props) {
             console.log('离开教室');
         } else if (content["notify"] === "rewardinfo") {
             // 奖励
-            console.log(JSON.parse(JSON.stringify(content)));
         }
     }
 
@@ -295,7 +294,6 @@ function ListItem (props) {
     return (
         <ul className='list-item hide-scroll'>
             {
-                // eslint-disable-next-line react/prop-types
                 courseData.courseList.map(item => (
                     <li key={item.id}>
                         <p className='list-item-title'>{item.title}</p>
@@ -315,6 +313,7 @@ function ListItem (props) {
 class CourseList extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props.courseData, '-----------------asd');
     }
     render () {
         let { courseData, userInfo, clearInterval } = this.props;

@@ -101,8 +101,8 @@ module.exports = merge(config, {
         new CopyWebpackPlugin([
             { from: path.resolve(__dirname, '../../static'), to: path.resolve(__dirname, '../../dist/h5/live/static'), ignore: ['.*'] }
         ]),
-        new BundleAnalyzerPlugin({
-            analyzerPort: 8889
-        })
+        // new BundleAnalyzerPlugin({
+        //     analyzerPort: 8889
+        // })
     ]
 });

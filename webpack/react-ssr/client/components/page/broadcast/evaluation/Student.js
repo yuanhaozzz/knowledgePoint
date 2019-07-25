@@ -33,7 +33,6 @@ class Student extends Component {
             starBroadcast: this.state.starBroadcast,
             textArea: this.state.textArea,
         };
-        console.log(params);
         window.webAdapter.closeWindow();
 
     }

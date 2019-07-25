@@ -57,7 +57,6 @@ class Teacher extends Component {
      * 处理点击
      */
     handleSubmit = e => {
-        console.log(JSON.parse(JSON.stringify(this.state.student)));
         window.webAdapter.closeWindow();
     }
     render () {

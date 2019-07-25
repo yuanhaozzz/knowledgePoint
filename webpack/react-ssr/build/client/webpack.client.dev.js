@@ -17,17 +17,16 @@ module.exports = merge(config, {
     entry: {
         // polyfill 兼容低版本  试试不加 因为在preset-env中 已经制定usebuiltInt
         // webpack-hot-middleware 热更新
-        app: ["@babel/polyfill", _path('../../client/main.js')]
+        app: ['webpack-hot-middleware/client?noInfo=true&reload=true', "@babel/polyfill", _path('../../client/main.js')]
     },
-
     devtool: 'inline-source-map',
     // 外部引入  在指定后  需要在html中引入该资源
     // externals
     output: {
-        path: _path('../../dist/client'),
+        path: _path('../../dist/h5/live'),
         filename: '[name].js',
         chunkFilename: '[name].js',
-        publicPath: '/'
+        publicPath: '/h5/live'
     },
     module: {
         rules: [

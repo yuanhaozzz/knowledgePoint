@@ -34,7 +34,7 @@ import Course from '../src/broadcast/course';
 
 export default [
     {
-        path: '/',
+        path: '/h5/live',
         component: Login,
         exact: true,
         key: 'Home',
@@ -48,6 +48,7 @@ export default [
     },
     {
         path: '/h5/live/broadcast/course',
+        // path: '/',
         component: Course,
         key: 'course',
         exact: true,

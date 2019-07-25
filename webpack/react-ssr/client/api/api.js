@@ -8,7 +8,6 @@ const Ajax = Axios.create({
 Ajax.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 //添加请求拦截器
 Ajax.interceptors.request.use(function (config) {
-    console.log(config);
     // post数据序列化  针对post需要
     if (config.method === 'post') {
         config.data = qs.stringify(config.data);
@@ -21,7 +20,6 @@ Ajax.interceptors.request.use(function (config) {
 
 const API = {
     get (url, params, conf = {}) {
-        console.log('start');
         return new Promise((resolve, reject) => {
             Ajax.get(url, {
                 params,
@@ -49,12 +47,10 @@ const API = {
                 if (returnCode === 0) {
                     resolve(res.data.data);
                 } else {
-                    console.log(res, '---------------------12');
                     message.error(res.data.status.message);
                     reject(res.data.message);
                 }
             }).catch((err, errType) => {
-                console.log(err, '-------------------err');
                 // message.error(err.message);
                 reject(err, errType);
             });

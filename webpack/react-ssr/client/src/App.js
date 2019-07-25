@@ -4,7 +4,7 @@ import Router from '../route';
 
 import { createClientStore } from '../redux/store';
 import { Provider } from 'react-redux';
-import './App.css';
+import './App.less';
 import '../assets/css/reset.less';
 const App = () => {
     return (

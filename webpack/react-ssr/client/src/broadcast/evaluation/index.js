@@ -15,7 +15,6 @@ class evaluation extends Component {
     }
 
     componentDidMount () {
-        console.log(location.search);
         this.setState({
             platform: window.WCRClassRoom.getClientType() || 'teacher'
         });

@@ -17,19 +17,19 @@ var cookieParser = require('cookie-parser');
 let html = fs.readFileSync('dist/h5/live/index.html', 'utf-8');
 
 let dev = process.env.NODE_ENV === 'development';
+
 if (dev) {
     app.use(webpackDevMiddleware(compiler, {
-        noInfo: true, publicPath: '/',
+        publicPath: config.output.publicPath,
+        noInfo: true,
         writeToDisk: true
     }));
     app.use(require("webpack-hot-middleware")(compiler));
 }
-
-
-app.use(express.static('dist'));
 app.use(cookieParser());
+app.use(express.static('dist'));
 
-// //注意这里要换成*来匹配
+//注意这里要换成*来匹配
 app.get('*', async function (req, res) {
     console.log(req.cookies, '22222222222222222222222222222222222');
     // 同一个服务 返回的实例一样

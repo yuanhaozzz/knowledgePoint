@@ -24,7 +24,7 @@ class Sidebar extends Component {
 
     handleSignOut = () => {
         window.WCRClassRoom.setUser('');
-        Router.push('/broadcast/login');
+        this.props.history.push('/h5/live/broadcast/login');
     }
 
     handleSwitchStudent = () => {

@@ -65,8 +65,6 @@ class Course extends Component {
     }
 
     componentDidMount () {
-        console.log(this.props.courseListStore);
-        console.log(this.props.userInfo, '2');
         window.resizeTo(1080, 650);
         this.handleUserId();
         // this.checkTodayCourse(+new Date(this.state.currentDate));
@@ -165,7 +163,6 @@ class Course extends Component {
     */
     checkTodayCourse = (nowDate) => {
         let today = format(nowDate, 'yyyy-MM-dd');
-        console.log(1);
         this.props.sendCourseDetail({
             courseData: (arrayFind(this.state.courseData, 'date', today) || {})
         });
@@ -195,7 +192,7 @@ class Course extends Component {
             <Fragment>
                 <div className='content-layout'>
                     {/* 侧边栏 个人信息 */}
-                    <Sidebar userInfo={userInfo}></Sidebar>
+                    <Sidebar userInfo={userInfo} {...this.props}></Sidebar>
                     <div className='content-layout-right flex-center'>
                         <div className='content-layout-right-box'>
                             <div className='content-layout-right-caleandar'>
@@ -207,7 +204,7 @@ class Course extends Component {
                         </div>
                         <div className='content-layout-right-carryout'>共{this.showLesson().lesson}节课 | 完成{this.showLesson().lessonLength}节</div>
                     </div>
-                    {/* <Dialog handleDialogSwitchStudent={this.handleDialogSwitchStudent} userInfo={userInfo}></Dialog> */}
+                    <Dialog handleDialogSwitchStudent={this.handleDialogSwitchStudent} userInfo={userInfo}></Dialog>
                 </div>
             </Fragment>
         );
@@ -232,8 +229,6 @@ let courseComponent = connect(
 
 courseComponent.getInintalProps = (store, cookie) => {
     let userInfo = JSON.parse(cookie.userInfo);
-    console.log(typeof userInfo, 'router----------------------');
-    console.log(userInfo, 'router----------------------');
     // 写入store
     store.dispatch(setUserInfo({ userInfo }));
     let params = {
@@ -246,7 +241,6 @@ courseComponent.getInintalProps = (store, cookie) => {
     } else {
         params.subUserId = userInfo.userId;
     }
-    console.log(params, '----------------2');
     return store.dispatch(awaitCourseList(params));
 };
 

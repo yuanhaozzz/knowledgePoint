@@ -40,7 +40,6 @@ export let format = (time, fmt) => {
  * @param {string} value 
  */
 export let arrayFind = (arr, key, value) => {
-    console.log(value);
     // eslint-disable-next-line no-debugger
     for (var i = 0; i < arr.length; i++) {
         if (format(arr[i][key], 'yyyy-MM-dd') === value) {

@@ -2,4 +2,4 @@
 require('ignore-styles');
 // 将require
 require('@babel/register')();
-require('./server.js')
+require('./server.js');
