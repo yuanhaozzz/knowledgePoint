@@ -73,6 +73,11 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        alias: {
+            '@ant-design/icons/lib/dist$': path.resolve(__dirname, '../client/assets/icon.js')
+        }
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'css/[name].css'

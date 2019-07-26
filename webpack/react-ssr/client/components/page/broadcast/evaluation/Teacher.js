@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Button } from 'antd';
+import './Teacher.less';
 
 function StudentItme (props) {
     let { student } = props;
@@ -94,53 +95,7 @@ class Teacher extends Component {
                         </Button>
                     </div>
                 </div>
-                <style jsx>{`
-                    .teacher{
-                        
-                    }
-                    .teacher-header{
-                        border-bottom: 1px solid #ddd;
-                        height: 70px;
-                        text-align: center;
-                        line-height: 70px;
-                        font-size: 20px;
-                        color: #000;
-                    }
-                    .teacher-content{
-                        padding: 25px 20px;
-                    }
-                    .teacher-content-table{
-                        border: 1px solid #ddd;
-                    }
-                    .table-sort, .table-name, .table-reward{
-                        width: 20%;
-                    }
-                    .table-evaluation{
-                        width: 40%;
-                    }
-                    .teacher-content-table li{
-                        display: flex;
-                        justify-content: flex-start;
-                        min-height: 55px;
-                        font-size: 18px;
-                        color: #000;
-                        border-bottom: 1px solid #ddd;
-                    }
-                    .table-evaluation{
-                        padding: 20px;
-                        box-sizing: border-box;
-                    }
-                    .teacher-content-table li:nth-of-type(1) {
-                        background-color: #B0E0E6;
-                    }
-                    .teacher-content-table li:last-child {
-                        border: none;
-                    }
-                    .teacher-content-submit{
-                        width: 40%;
-                        margin: 30px auto;
-                    }
-                `}</style>
+
             </div >
         );
     }

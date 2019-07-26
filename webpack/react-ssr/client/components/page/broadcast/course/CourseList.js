@@ -202,7 +202,6 @@ function ListItem (props) {
      * @param {*} content.body      客户端回调参数
      */
     function afterJoinClassroomCallback (content, course, userInfoParam) {
-        alert(content["notify"]);
         if (content["notify"] === "startClass") {
             window.WCRClassRoom.web_log(JSON.stringify(content));
             // 清除定时器

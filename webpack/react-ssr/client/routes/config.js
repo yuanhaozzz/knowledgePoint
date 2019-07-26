@@ -4,34 +4,16 @@
 
 import Login from '../src/broadcast/login';
 import Course from '../src/broadcast/course';
-
-// async function a () {
-//     debugger
-//     let val = await (import('../src/Home'))
-// }
-
-// a()
-
-// 按需引入问题？？？
-
-// export let clientRoute = [
-//     {
-//         path: '/',
-//         component: HomeDynmic,
-//         exact: true,
-//         key: 'Home',
-//         // loadData: Home.getInintalProps
-//     },
-//     {
-//         path: '/login',
-//         component: LoginDynmic,
-//         key: 'login',
-//         exact: true,
-//         // loadData: Login.getInintalProps
-//     }
-// ]
+import Evaluation from '../src/broadcast/evaluation';
 
 export default [
+    {
+        path: '/h5/live/broadcast/Evaluation',
+        // path: '/',
+        component: Evaluation,
+        key: 'evaluation',
+        exact: true,
+    },
     {
         path: '/h5/live',
         component: Login,
@@ -53,4 +35,5 @@ export default [
         exact: true,
         loadData: Course.getInintalProps
     }
+ 
 ];

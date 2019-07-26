@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Student from '../../../components/page/broadcast/evaluation/Student';
 import Teacher from '../../../components/page/broadcast/evaluation/Teacher';
-import Layout from '../../../components/common/Layout';
-
-import { queryUrlValue } from '../../../utils/common';
 
 class evaluation extends Component {
     constructor(props) {
@@ -32,12 +29,12 @@ class evaluation extends Component {
     render () {
 
         return (
-            <Layout>
+            <Fragment>
                 {/* 评价组件 */}
                 {
                     this.state.platform && this.isTeacher()
                 }
-            </Layout>
+            </Fragment>
         );
     }
 }
