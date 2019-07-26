@@ -326,7 +326,6 @@ class Login extends Component {
                         loginName: options.loginName,
                         password: options.password
                     }));
-                    console.log(JSON.stringify(userInfo));
                     window.WCRClassRoom.setUser(JSON.stringify(userInfo));
                     this.props.history.push('/h5/live/broadcast/course');
                 }).catch(err => {

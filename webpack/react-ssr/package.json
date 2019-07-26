@@ -6,9 +6,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack --config ./build/client/webpack.client.prod.js",
-        "prod": "pm2 start ./server/test.js --name bwgj-build-3001",
+        "prod": "node ./server/test.js",
         "start": "cross-env NODE_ENV=development node ./server/test.js",
-        "dev": "npm run build && npm run prod"
+        "dev": "npm run start"
     },
     "keywords": [],
     "author": "",

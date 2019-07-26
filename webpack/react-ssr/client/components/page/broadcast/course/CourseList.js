@@ -19,7 +19,6 @@ function CourseHeader () {
 
 function ListItem (props) {
     let { courseData = {}, userInfo, clearInterval } = props;
-    console.log(courseData, '2222222222222222222-');
     /**
      * 返回教室类型
      * @param {number | string} scenario 区分教室类型 0 1v1  7 小班课  2 大班课
@@ -146,7 +145,6 @@ function ListItem (props) {
             } else {
                 userInfoParam.subUserId = userInfo.userId;
             }
-            console.log(JSON.stringify(params), 'aaaaa');
             // 进入教室  
             WCRClassRoom.joinClassRoom(JSON.stringify(params), (result) => {
                 // 回调函数
@@ -223,14 +221,6 @@ function ListItem (props) {
                     server_time: format(res.systemDate, 'yyyy-MM-dd hh:mm:ss'),
                     notify: 'startClass'
                 });
-                console.log({
-                    status: 1,
-                    lesson: course.id,
-                    actual_time: (course.actualStartTime ? format(course.actualStartTime, 'yyyy-MM-dd hh:mm:ss') : format(res.systemDate, 'yyyy-MM-dd hh:mm:ss')),
-                    server_time: format(res.systemDate, 'yyyy-MM-dd hh:mm:ss'),
-                    notify: 'startClass',
-                    time: course.actualStartTime
-                }, '--------');
             }).catch(err => {
                 handleClientCallback({
                     status: 2,
@@ -313,7 +303,6 @@ function ListItem (props) {
 class CourseList extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.courseData, '-----------------asd');
     }
     render () {
         let { courseData, userInfo, clearInterval } = this.props;

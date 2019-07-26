@@ -12,13 +12,6 @@ const clientCompiler = webpack(clientConfig);
 
 let path = require('path');
 
-// app.use(webpackDevMiddleware(compiler, {
-//     noInfo: true, publicPath: '/',
-//     writeToDisk: true
-// }));
-// app.use(require("webpack-hot-middleware")(compiler));
-
-
 module.exports = function (app) {
 
     const devMiddleware = require("webpack-dev-middleware")(clientCompiler, {
@@ -28,17 +21,6 @@ module.exports = function (app) {
     });
 
     app.use(devMiddleware);
-
-    // let filename = path.join(clientCompiler.outputPath, 'index.html');
-    // clientCompiler.outputFileSystem.readFile(filename, (err, result) => {
-    //     console.log(err, '==============================');
-    //     if (err) {
-    //         return err;
-    //     }
-    //     console.log(result, '----------------------------');
-    //     res.send(result);
-    // });
-
     // 热更新中间件
     app.use(require("webpack-hot-middleware")(clientCompiler));
 

@@ -31,8 +31,7 @@ app.use(express.static('dist'));
 
 //注意这里要换成*来匹配
 app.get('*', async function (req, res) {
-    console.log(req.cookies, '22222222222222222222222222222222222');
-    // 同一个服务 返回的实例一样
+    // 同一个端 返回的实例一样
     let store = createServerStore();
     // 返回匹配路由的数组。
     const matchedRoutes = matchRoutes(routes, req.path);

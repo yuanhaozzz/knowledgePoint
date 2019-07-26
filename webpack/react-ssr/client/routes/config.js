@@ -8,7 +8,6 @@ import Course from '../src/broadcast/course';
 // async function a () {
 //     debugger
 //     let val = await (import('../src/Home'))
-//     console.log(val(), '222222222222222')
 // }
 
 // a()

@@ -56,18 +56,22 @@ class Course extends Component {
     }
 
     componentWillMount () {
-        if (!this.props.courseListStore) {
-            this.clientRequest();
-            this.setState({
-                courseData: this.props.courseListStore
+        // 判断数据是否存在  是否为服务端渲染字符串
+        if (Object.keys(this.props.courseListStore).length > 0) {
+            this.setState(state => {
+                return {
+                    courseData: this.props.courseListStore
+                };
             });
+            this.checkTodayCourse(+new Date(this.state.currentDate), this.props.courseListStore);
+        } else {
+            this.clientRequest();
         }
     }
 
     componentDidMount () {
         window.resizeTo(1080, 650);
-        this.handleUserId();
-        // this.checkTodayCourse(+new Date(this.state.currentDate));
+        // this.handleUserId();
         this.setState({
             // 刷新接口调通后 使用setTimeout
             // interval: setTimeout(() => {
@@ -142,7 +146,7 @@ class Course extends Component {
             this.setState({
                 courseData: res.calendarList
             });
-            this.checkTodayCourse(+new Date(this.state.changeDate));
+            this.checkTodayCourse(+new Date(this.state.changeDate), this.state.courseData);
         });
     }
 
@@ -154,17 +158,17 @@ class Course extends Component {
         this.setState({
             studentId: userId
         });
-        this.getCourseList(userId);
+        // this.getCourseList(userId);
     }
 
     /**
     * 检查当前日期是否有课
     * @param {number} nowDate 时间戳
     */
-    checkTodayCourse = (nowDate) => {
+    checkTodayCourse = (nowDate, courseData) => {
         let today = format(nowDate, 'yyyy-MM-dd');
         this.props.sendCourseDetail({
-            courseData: (arrayFind(this.state.courseData, 'date', today) || {})
+            courseData: (arrayFind(courseData, 'date', today) || {})
         });
 
     }
@@ -224,13 +228,14 @@ let mapStateToProps = state => {
 
 let courseComponent = connect(
     mapStateToProps,
-    { sendCourseDetail, setStudent, setUserInfo }
+    { sendCourseDetail, setStudent, setUserInfo, awaitCourseList }
 )(Course);
 
 courseComponent.getInintalProps = (store, cookie) => {
     let userInfo = JSON.parse(cookie.userInfo);
     // 写入store
     store.dispatch(setUserInfo({ userInfo }));
+
     let params = {
         token: userInfo.loginToken,
         startDate: computedDate(new Date(), 'startDate'),
@@ -242,6 +247,7 @@ courseComponent.getInintalProps = (store, cookie) => {
         params.subUserId = userInfo.userId;
     }
     return store.dispatch(awaitCourseList(params));
+
 };
 
 export default courseComponent;
