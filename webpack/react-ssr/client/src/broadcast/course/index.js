@@ -65,34 +65,18 @@ class Course extends Component {
             });
             this.checkTodayCourse(+new Date(this.state.currentDate), this.props.courseListStore);
         } else {
-            this.clientRequest();
+            this.handleUserId();
         }
     }
 
     componentDidMount () {
         window.resizeTo(1080, 650);
-        // this.handleUserId();
         this.setState({
             // 刷新接口调通后 使用setTimeout
             // interval: setTimeout(() => {
             //     window.webAdapter.reload();
             // }, 60000)
         });
-    }
-
-    clientRequest = () => {
-        let { userInfo } = this.props;
-        let params = {
-            token: userInfo.loginToken,
-            startDate: computedDate(new Date(), 'startDate'),
-            endDate: computedDate(new Date(), 'endDate'),
-        };
-        if (userInfo.subUserInfoVoList.length > 0) {
-            params.subUserId = arrayFindTo(userInfo.subUserInfoVoList, 'select', true).userId;
-        } else {
-            params.subUserId = userInfo.userId;
-        }
-        this.props.awaitCourseList(params);
     }
 
     // 清除自动请求定时器
