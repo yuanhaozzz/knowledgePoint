@@ -30,11 +30,11 @@ module.exports = merge(config, {
             'redux'
         ]
     },
-    // resolve: {
-    //     alias: {
-    //         '@ant-design/icons/lib/dist$': path.resolve(__dirname, '../../client/src'),
-    //     }
-    // },
+    resolve: {
+        alias: {
+            '@ant-design/icons/lib/dist$': path.resolve(__dirname, '../../client/assets/icon.js')
+        }
+    },
     devtool: 'source-map',
     // 外部引入  在指定后  需要在html中引入该资源
     // externals

@@ -2,9 +2,9 @@
 // let HomeDynmic = ImportComponent(import('../src/Home'))
 // let LoginDynmic = ImportComponent(import('../src/Login'))
 
-import Login from '../src/broadcast/login';
-import Course from '../src/broadcast/course';
-import Evaluation from '../src/broadcast/evaluation';
+import Login from '../broadcast/login';
+import Course from '../broadcast/course';
+import Evaluation from '../broadcast/evaluation';
 
 export default [
     {
@@ -35,5 +35,5 @@ export default [
         exact: true,
         loadData: Course.getInintalProps
     }
- 
+
 ];

@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 // 单独打包css
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+console.log(__dirname, '--------------')
 
 module.exports = {
     mode: 'production',
@@ -34,6 +35,11 @@ module.exports = {
                 ]
             }
         ]
+    },
+    resolve: {
+        alias: {
+            'aaa': path.resolve(__dirname, '')
+        }
     },
     plugins: [
         new CleanWebpackPlugin(),

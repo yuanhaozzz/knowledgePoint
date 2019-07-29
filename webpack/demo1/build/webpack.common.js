@@ -11,9 +11,7 @@ module.exports = {
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js'
     },
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
+
     module: {
         rules: [
             {
