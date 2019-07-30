@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 
+import './App.less'
 import store from '@/redux/store'
 import routes from '@/router/config'
 
