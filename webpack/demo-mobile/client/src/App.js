@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 
@@ -17,6 +17,11 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
+                    {/* {
+                        routes.map(item => (
+                            <Route path={item.path} component={item.component}></Route>
+                        ))
+                    } */}
                     {renderRoutes(routes)}
                 </BrowserRouter>
             </Provider>
