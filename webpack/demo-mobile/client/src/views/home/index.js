@@ -49,6 +49,11 @@ class Home extends Component {
         return (
             <div className='home-wrapper'>
                 Home
+                {
+                    {
+                        
+                    }
+                }
                 <button onClick={this.handleJumpTo}>跳转</button>
                 <button onClick={this.handleModify}>修改</button>
 

@@ -3,6 +3,7 @@ import React, { Component, Suspense } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
+import ErrorBoundary from '@/components/common/error-boundary'
 
 import './App.less';
 import store from '@/redux/store';
@@ -19,12 +20,9 @@ class App extends Component {
                 <BrowserRouter>
                     {/* 配合lazy 使用 实现代码分割 */}
                     <Suspense fallback={<div></div>}>
-                        {/* {
-                        routes.map(item => (
-                            <Route path={item.path} component={item.component}></Route>
-                        ))
-                    } */}
-                        {renderRoutes(routes)}
+                        <ErrorBoundary>
+                            {renderRoutes(routes)}
+                        </ErrorBoundary>
                     </Suspense>
                 </BrowserRouter>
             </Provider>
