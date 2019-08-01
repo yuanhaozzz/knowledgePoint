@@ -1,6 +1,6 @@
-let path = require('path')
-let merge = require('webpack-merge')
-let config = require('./webpack.base.config.js')
+let path = require('path');
+let merge = require('webpack-merge');
+let config = require('./webpack.base.config.js');
 
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 /**
@@ -8,12 +8,12 @@ let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
  * npm install --save-dev optimize-css-assets-webpack-plugin
  */
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-let _path = dir => path.resolve(__dirname, dir)
+let _path = dir => path.resolve(__dirname, dir);
 
 module.exports = merge(config, {
     mode: 'production',
     entry: {
-        app: _path('../client/src/main.js')
+        app: ["@babel/polyfill", _path('../client/src/main.js')]
     },
     output: {
         path: _path('../dist'),
@@ -29,4 +29,4 @@ module.exports = merge(config, {
         // })
     ]
 
-})
+});

@@ -1,9 +1,9 @@
-let HtmlWebpackPlugin = require('html-webpack-plugin')
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
-let { CleanWebpackPlugin } = require('clean-webpack-plugin')
-let path = require('path')
+let { CleanWebpackPlugin } = require('clean-webpack-plugin');
+let path = require('path');
 
-let _path = dir => path.resolve(__dirname, dir)
+let _path = dir => path.resolve(__dirname, dir);
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -65,4 +65,4 @@ module.exports = {
         })
 
     ]
-}
+};

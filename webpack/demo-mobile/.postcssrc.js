@@ -1,5 +1,7 @@
 module.exports = {
+    loader: 'postcss-loader',
     "plugins": {
+        'postcss-preset-env': {},
         // "postcss-import": {}, "postcss-url": {},
         // "postcss-aspect-ratio-mini": {},
         // "postcss-write-svg": { utf8: false },

@@ -1,9 +1,10 @@
-import importComponent from '@/components/common/importComponent'
+// import importComponent from '@/components/common/importComponent';
 // import Home from '@/views/home'
 // import Login from '@/views/login'
+import React from 'react';
 
-let Home = importComponent(() => import('@/views/home'))
-let Login = importComponent(() => import('@/views/login'))
+let Home = React.lazy(() => import('@/views/home'));
+let Login = React.lazy(() => import('@/views/login'));
 
 
 export default [
@@ -16,4 +17,4 @@ export default [
         path: '/login',
         component: Login
     }
-]
+];

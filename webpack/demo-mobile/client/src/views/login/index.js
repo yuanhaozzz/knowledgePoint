@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { List, Switch, Calendar } from 'antd-mobile';
 import enUS from 'antd-mobile/lib/calendar/locale/en_US';
 import zhCN from 'antd-mobile/lib/calendar/locale/zh_CN';
-import ContentLoader, { Facebook } from 'react-content-loader'
-import './Login.less'
+import ContentLoader, { Facebook } from 'react-content-loader';
+import './Login.less';
 
 const extra = {
     '2017/07/15': { info: 'Disable', disable: true },
@@ -24,8 +24,6 @@ Object.keys(extra).forEach((key) => {
 });
 
 class Test extends React.Component {
-    originbodyScrollY = document.getElementsByTagName('body')[0].style.overflowY;
-
     constructor(props) {
         super(props);
         this.state = {
@@ -34,12 +32,12 @@ class Test extends React.Component {
             config: {},
         };
     }
-
+    originbodyScrollY = document.getElementsByTagName('body')[0].style.overflowY;
     renderBtn (zh, en, config = {}) {
         config.locale = this.state.en ? enUS : zhCN;
 
         return (
-            <List.Item arrow="horizontal"
+            <List.Item arrow='horizontal'
                 onClick={() => {
                     document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
                     this.setState({
@@ -86,15 +84,15 @@ class Test extends React.Component {
     render () {
         return (
             <div>
-                <div className="test"></div>
+                <div className='test'></div>
                 <ContentLoader>
                     {/* Only SVG shapes */}
-                    <rect x="80" y="40" rx="3" ry="3" width="250" height="250" />
-                    <rect x="10" y="40" rx="3" ry="3" width="30" height="30" />
-                    <rect x="0" y="0" rx="30" ry="30" width="30" height="30" />
+                    <rect x='80' y='40' rx='3' ry='3' width='250' height='250' />
+                    <rect x='10' y='40' rx='3' ry='3' width='30' height='30' />
+                    <rect x='0' y='0' rx='30' ry='30' width='30' height='30' />
                 </ContentLoader>
-                <List className="calendar-list" style={{ backgroundColor: 'white' }}>
-                    <List.Item className="item" extra={<Switch className="right" checked={!this.state.en} onChange={this.changeLanguage} />}>
+                <List className='calendar-list' style={{ backgroundColor: 'white' }}>
+                    <List.Item className='item' extra={<Switch className='right' checked={!this.state.en} onChange={this.changeLanguage} />}>
                         {this.state.en ? 'Chinese' : '中文'}
                     </List.Item>
                     {this.renderBtn('选择日期区间', 'Select Date Range')}
@@ -138,4 +136,4 @@ class Test extends React.Component {
     }
 }
 
-export default Test
+export default Test;
