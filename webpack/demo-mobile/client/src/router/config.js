@@ -5,6 +5,7 @@ import React from 'react';
 
 let Home = React.lazy(() => import('@/views/home'));
 let Login = React.lazy(() => import('@/views/login'));
+let Context = React.lazy(() => import('@/components/common/context'));
 
 
 export default [
@@ -16,5 +17,9 @@ export default [
     {
         path: '/login',
         component: Login
+    },
+    {
+        path: '/context',
+        component: Context
     }
 ];
