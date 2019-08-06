@@ -7,7 +7,6 @@ let Home = React.lazy(() => import('@/views/home'));
 let Login = React.lazy(() => import('@/views/login'));
 let Context = React.lazy(() => import('@/components/common/context'));
 let Refs = React.lazy(() => import('@/components/common/ref'));
-let Portal = React.lazy(() => import('@/components/common/portal'));
 
 
 export default [
@@ -27,9 +26,5 @@ export default [
     {
         path: '/refs',
         component: Refs
-    },
-    {
-        path: '/portal',
-        component: Portal
     }
 ];
