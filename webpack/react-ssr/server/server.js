@@ -2,6 +2,7 @@ import express from 'express';
 import { createServerStore } from '../client/redux/store';
 import { matchRoutes } from 'react-router-config';
 let fs = require('fs');
+var accessLogger = fs.createWriteStream('access.log', { flags: 'a' });
 
 import { render } from './utils';
 import routes from '../client/routes/config';
@@ -28,6 +29,9 @@ if (dev) {
 }
 app.use(cookieParser());
 app.use(express.static('dist'));
+
+app.use(logger('dev'));
+app.use(logger({ stream: accessLogger }));
 
 //注意这里要换成*来匹配
 app.get('*', async function (req, res) {
