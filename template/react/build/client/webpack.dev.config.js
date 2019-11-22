@@ -24,13 +24,5 @@ module.exports = merge(config, {
         noInfo: true, // only errors & warns on hot reload
         progress: true,
         port: 9000
-    },
-    resolve: {
-        // 使用扩展名    当引入文件不写后缀时使用
-        extensions: ['js', 'jsx', 'less'],
-        alias: {
-            '@': resolvePath('../../client/src')
-        }
     }
-
 })

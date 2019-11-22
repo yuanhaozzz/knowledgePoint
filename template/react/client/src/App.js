@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import Test from '@/view/test'
+import {
+    BrowserRouter as Router,
+    Switch,
+} from "react-router-dom";
+
+import EntryRouterAuth from '@/components/common/entry-router-auth'
+
 
 import './app.less'
 class App extends Component {
@@ -9,10 +15,12 @@ class App extends Component {
     }
     render () {
         return (
-            <div>
-                hello world
-                            <Test></Test>
-            </div>
+            <Router>
+                <Switch>
+                    <EntryRouterAuth></EntryRouterAuth>
+                </Switch>
+            </Router>
+
         );
     }
 }
