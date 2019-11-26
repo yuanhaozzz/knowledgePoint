@@ -6,6 +6,8 @@ import {
 
 import EntryRouterAuth from '@/components/common/entry-router-auth'
 
+import Store from '@/store/store'
+import {Provider} from 'react-redux'
 
 import './app.less'
 class App extends Component {
@@ -15,12 +17,13 @@ class App extends Component {
     }
     render () {
         return (
-            <Router>
-                <Switch>
-                    <EntryRouterAuth></EntryRouterAuth>
-                </Switch>
-            </Router>
-
+            <Provider store={Store}>
+                  <Router>
+                    <Switch>
+                        <EntryRouterAuth></EntryRouterAuth>
+                    </Switch>
+                </Router>
+            </Provider>
         );
     }
 }

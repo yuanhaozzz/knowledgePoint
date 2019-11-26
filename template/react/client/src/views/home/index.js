@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+import {setTest} from '@/store/actions'
 import './home.less'
 
 
@@ -8,11 +10,27 @@ class index extends Component {
         super(props);
         this.state = {};
     }
+
+    componentDidMount() {
+        this.props.setTest({test: 'test'})
+        console.log(this.props.test)
+    }
     render () {
         return (
-            <div>Home</div>
+        <div>Home {this.props.test}</div>
         );
     }
 }
 
-export default index;
+let mapStateToProps = state => {
+    console.log(state)
+    let {test} = state.test
+    return {
+        test
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {setTest}
+)(index);
