@@ -15,9 +15,20 @@ class index extends Component {
         this.props.setTest({test: 'test'})
         console.log(this.props.test)
     }
+
+     /**
+     * 跳转
+     */
+    jumpToHtml = () => {
+        location.href = '/test'
+    }
+
     render () {
         return (
-        <div>Home {this.props.test}</div>
+            <div>
+                <p>Home</p>
+                <button onClick={this.jumpToHtml}>跳转test</button>
+            </div>
         );
     }
 }
