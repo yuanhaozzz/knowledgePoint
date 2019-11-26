@@ -77,16 +77,16 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'react',
-            template: resolvePath('../../client/index.html')
+            template: resolvePath('../../index.html')
         }),
         new CopyWebpackPlugin([
-            { from: path.resolve(__dirname, '../../client/static'), to: path.resolve(__dirname, '../../client/src/dist/static'), ignore: ['.*'] }
+            { from: path.resolve(__dirname, '../../static'), to: path.resolve(__dirname, '../../dist/static'), ignore: ['.*'] }
         ]),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: devMode ? '[name].css' : 'css/[name].[hash:8].css',
-            chunkFilename: devMode ? '[id].css' : 'css/[id].[hash:8].css',
+            filename: devMode ? 'css/[name].css' : 'css/[name].[hash:8].css',
+            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash:8].css',
         })
     ]
 

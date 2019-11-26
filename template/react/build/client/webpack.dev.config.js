@@ -12,7 +12,8 @@ module.exports = merge(config, {
     devtool: 'sourse-map',
     output: {
         filename: '[name].js',
-        path: resolvePath('../../client/src/dist')
+        path: resolvePath('../../client/src/dist'),
+        // publicPath: '/client'
     },
     devServer: {
         contentBase: resolvePath('../../client/src/dist'),

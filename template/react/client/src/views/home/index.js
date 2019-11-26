@@ -8,9 +8,20 @@ class index extends Component {
         super(props);
         this.state = {};
     }
+
+    /**
+     * 跳转
+     */
+    jumpToHtml = () => {
+        location.href = '/test'
+    }
+
     render () {
         return (
-            <div>Home</div>
+            <div>
+                <p>Home</p>
+                <button onClick={this.jumpToHtml}>跳转test</button>
+            </div>
         );
     }
 }
