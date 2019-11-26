@@ -6,14 +6,20 @@ import './home.less'
 
 
 class index extends Component {
+
+    static getInintalProps = store => {
+        console.log(11111111111111)
+        return store.dispatch(setTest())
+    }
+
     constructor(props) {
         super(props);
         this.state = {};
     }
+    
 
     componentDidMount() {
-        this.props.setTest({test: 'test'})
-        console.log(this.props.test)
+        console.log(this.props.test, '---------------')
     }
 
      /**
@@ -24,17 +30,17 @@ class index extends Component {
     }
 
     render () {
+        let {test} = this.props
         return (
             <div>
                 <p>Home</p>
-                <button onClick={this.jumpToHtml}>跳转test</button>
+        <button onClick={this.jumpToHtml}>跳转test{test}</button>
             </div>
         );
     }
 }
 
 let mapStateToProps = state => {
-    console.log(state)
     let {test} = state.test
     return {
         test

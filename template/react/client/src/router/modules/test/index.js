@@ -8,9 +8,10 @@ export default [
         path: '/',
         component: Home,
         meta: {
-            title: '首页'
+            title: '首asd页'
         },
-        exact: true
+        exact: true,
+        loadData: Home.getInintalProps
     },
 
     {

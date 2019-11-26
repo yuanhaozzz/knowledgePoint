@@ -5,6 +5,7 @@ import Reducer from './reducer/index';
 // 返回不同实例store
 export function createClientStore () {
     let defaultState = window._REACT_SOTRE ? window._REACT_SOTRE : {};
+    console.log(defaultState)
     return createStore(Reducer, defaultState, applyMiddleware(thunk));
 }
 

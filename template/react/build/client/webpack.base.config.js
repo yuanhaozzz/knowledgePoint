@@ -77,6 +77,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'react',
+            filename: 'template.html',
             template: resolvePath('../../index.html')
         }),
         new CopyWebpackPlugin([

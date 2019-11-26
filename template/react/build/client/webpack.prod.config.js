@@ -10,7 +10,7 @@ module.exports = merge(config, {
     output: {
         filename: 'js/[name].[hash:8].js',
         chunkFilename: 'js/[name].[chunkhash:8].js',
-        path: resolvePath('../../dist'),
+        path: resolvePath('../../dist/client'),
         publicPath: '/client'
     }
 })

@@ -1,8 +1,21 @@
 import {TEST} from './actionType'
 
-export function setTest(payload) {
+
+export function setList(payload) {
     return {
         type: TEST,
         payload
+    }
+} 
+
+
+export function setTest() {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                dispatch(setList({test: '是是是是'}))
+                reject('你大爷')
+            }, 2000);
+        })
     }
 }
