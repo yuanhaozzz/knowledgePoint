@@ -1,7 +1,7 @@
 let config = require('./webpack.base.config.js')
 let merge = require('webpack-merge')
 let path = require('path')
-const webpack = require("webpack");
+
 
 
 let resolvePath = _path => {
@@ -10,9 +10,6 @@ let resolvePath = _path => {
 module.exports = merge(config, {
     mode: 'development',
     devtool: 'sourse-map',
-    entry: {
-        app: ['webpack-hot-middleware/client?noInfo=true&reload=true']
-    },
     output: {
         filename: '[name].js',
         path: resolvePath('../../client/src/dist'),
@@ -28,8 +25,5 @@ module.exports = merge(config, {
         noInfo: true, // only errors & warns on hot reload
         progress: true,
         port: 9000
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
+    }
 })
