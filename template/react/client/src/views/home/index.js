@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { setTest } from '../../store/actions'
+import { setTest, setTest1 } from '../../store/actions'
 import './home.less'
+import Environment from '../../utils/environment'
 
 
 class index extends Component {
 
     static getInintalProps = store => {
-        // console.log(11111111111111)
-        // return store.dispatch(setTest())
+        let promise = [store.dispatch(setTest()), store.dispatch(setTest1())]
+        Promise.all(promise).then(res => {
+            console.log(res, '----------------')
+            return res
+        })
+        
     }
 
     constructor(props) {
@@ -19,6 +24,7 @@ class index extends Component {
 
 
     componentDidMount () {
+        console.log(Environment.DOMAIN, '----------环境')
         console.log(this.props.test, '---------------')
         console.log(12121)
     }
@@ -31,24 +37,26 @@ class index extends Component {
     }
 
     render () {
-        let { test } = this.props
+        let { test, test1 } = this.props
         return (
             <div>
                 <p>Home</p>
-                <button onClick={this.jumpToHtml}>跳est{test}</button>
+                <button onClick={this.jumpToHtml}>{test}</button>
+                <button onClick={this.jumpToHtml}>{test1}</button>
             </div>
         );
     }
 }
 
 let mapStateToProps = state => {
-    let { test } = state.test
+    let { test,test1 } = state.test
     return {
-        test
+        test,
+        test1
     }
 }
 
 export default connect(
     mapStateToProps,
-    { setTest }
+    { setTest, setTest1 }
 )(index);

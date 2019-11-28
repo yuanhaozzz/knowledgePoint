@@ -8,6 +8,7 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import Routes from '../client/src/router'
 import { serverStore } from '../client/src/store/store'
 import { Provider } from 'react-redux'
+import Environment from '../client/src/utils/environment'
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const config = require('../build/client/webpack.dev.config');
@@ -44,6 +45,12 @@ function useStaticRouter (req, store) {
     return toString
 }
 
+app.use((req, res, next) => {
+    // 区分node 线上 预发布 接口环境
+    Environment.modifyMapDomain(req.host)
+    next()
+})
+
 
 app.get('*', function (req, res) {
 
@@ -55,8 +62,6 @@ app.get('*', function (req, res) {
             }
             html = result.toString()
         })
-
-        // html = fs.readFileSync('dist/template.html').toString()
     } else {
         html = fs.readFileSync('dist/client/template.html').toString()
     }

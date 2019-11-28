@@ -1,4 +1,4 @@
-import { TEST } from './actionType'
+import { TEST, TEST1 } from './actionType'
 
 export function setList (payload) {
     return {
@@ -6,14 +6,26 @@ export function setList (payload) {
         payload
     }
 }
+export function setList1 (payload) {
+    return {
+        type: TEST1,
+        payload
+    }
+}
 
 export function setTest () {
     return dispatch => {
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
                 dispatch(setList({ test: '是是是是' }))
                 resolve()
-            }, 2000);
+        })
+    }
+}
+export function setTest1 () {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+                dispatch(setList1({ test1: '真的？' }))
+                resolve()
         })
     }
 }
