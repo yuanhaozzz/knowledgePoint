@@ -4,7 +4,7 @@ import {
     Switch,
     Redirect
 } from "react-router-dom";
-import Routes from '@/router'
+import Routes from '../../../router'
 let { routes } = Routes
 
 // 只会匹配一个存在的路由

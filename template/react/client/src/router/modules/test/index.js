@@ -1,6 +1,6 @@
 
-import Home from '@/views/home'
-import Test from '@/views/test'
+import Home from '../../../views/home'
+import Test from '../../..//views/test'
 
 
 export default [

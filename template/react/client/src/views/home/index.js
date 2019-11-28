@@ -1,47 +1,48 @@
 import React, { Component } from 'react'
 
-import {connect} from 'react-redux'
-import {setTest} from '@/store/actions'
+import { connect } from 'react-redux'
+import { setTest } from '../../store/actions'
 import './home.less'
 
 
 class index extends Component {
 
     static getInintalProps = store => {
-        console.log(11111111111111)
-        return store.dispatch(setTest())
+        // console.log(11111111111111)
+        // return store.dispatch(setTest())
     }
 
     constructor(props) {
         super(props);
         this.state = {};
     }
-    
 
-    componentDidMount() {
+
+    componentDidMount () {
         console.log(this.props.test, '---------------')
+        console.log(12121)
     }
 
-     /**
-     * 跳转
-     */
+    /**
+    * 跳转
+    */
     jumpToHtml = () => {
         location.href = '/test'
     }
 
     render () {
-        let {test} = this.props
+        let { test } = this.props
         return (
             <div>
                 <p>Home</p>
-        <button onClick={this.jumpToHtml}>跳转test{test}</button>
+                <button onClick={this.jumpToHtml}>跳est{test}</button>
             </div>
         );
     }
 }
 
 let mapStateToProps = state => {
-    let {test} = state.test
+    let { test } = state.test
     return {
         test
     }
@@ -49,5 +50,5 @@ let mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {setTest}
+    { setTest }
 )(index);

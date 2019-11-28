@@ -1,7 +1,7 @@
 
-import Test from '@/router/modules/test'
+import Test from './modules/test'
 // 404页面
-import NotFound from '@/views/404'
+import NotFound from '../views/404'
 
 export default {
     routes: [

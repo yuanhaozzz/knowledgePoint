@@ -4,13 +4,30 @@ import { renderToString } from 'react-dom/server';
 // 服务端渲染 静态路由
 import { StaticRouter } from 'react-router-dom';
 // 静态路由配置
-import { renderRoutes, matchRoutes  } from 'react-router-config';
-import Routes from '@/router'
-import {serverStore} from '@/store/store'
-import {Provider} from 'react-redux'
+import { renderRoutes, matchRoutes } from 'react-router-config';
+import Routes from '../client/src/router'
+import { serverStore } from '../client/src/store/store'
+import { Provider } from 'react-redux'
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpack = require('webpack');
+const config = require('../build/client/webpack.dev.config');
+const compiler = webpack(config);
 let fs = require('fs')
 let express = require('express')
 const app = express();
+let dev = process.env.NODE_ENV === 'development'
+let path = require('path')
+const DIST_DIR = path.join(__dirname, "../dist")
+let html;
+
+if (dev) {
+    app.use(webpackDevMiddleware(compiler, {
+        publicPath: config.output.publicPath,
+        noInfo: true,
+        // writeToDisk: true
+    }));
+    app.use(require("webpack-hot-middleware")(compiler));
+}
 
 app.use(express.static('dist'))
 
@@ -29,12 +46,25 @@ function useStaticRouter (req, store) {
 
 
 app.get('*', function (req, res) {
-    let html = fs.readFileSync('dist/client/template.html').toString()
+
+    if (dev) {
+        const filename = path.join(DIST_DIR, 'template.html');
+        compiler.outputFileSystem.readFile(filename, (err, result) => {
+            if (err) {
+                return
+            }
+            html = result.toString()
+        })
+
+        // html = fs.readFileSync('dist/template.html').toString()
+    } else {
+        html = fs.readFileSync('dist/client/template.html').toString()
+    }
     let store = serverStore()
-    
+
     const matchedRoutes = matchRoutes(Routes.routes, req.path)
 
-     //promise对象数组
+    //promise对象数组
     const promises = [];
     matchedRoutes.forEach(item => {
         //如果这个路由对应的组件有loadData方法
@@ -44,7 +74,6 @@ app.get('*', function (req, res) {
             promises.push(item.route.loadData(store))
         }
     })
-    console.log(JSON.stringify(matchedRoutes))
 
 
     // 同一个页面多个请求如何处理
@@ -63,7 +92,7 @@ app.get('*', function (req, res) {
     }).catch(err => {
         res.send(err);
     })
-   
+
 })
 
 app.listen(3000, () => {
