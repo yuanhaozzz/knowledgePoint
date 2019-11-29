@@ -4,6 +4,7 @@ let path = require('path')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 // 复制文件/文件夹
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// 删除console
 // 打包css
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // 缩小js
@@ -19,7 +20,7 @@ let resolvePath = _path => {
 
 module.exports = {
     // mode: 'production',
-    entry: resolvePath('../../client/src/main.js'),
+    entry: [resolvePath('../../client/src/main.js'), "@babel/polyfill"],
     resolve: {
         alias: {
             '@': resolvePath('../../client/src')
@@ -56,6 +57,7 @@ module.exports = {
                     // 'style-loader',
                     // 解析css里面的import 和 url
                     'css-loader',
+                    'postcss-loader',
                     // 将less转换为css文件
                     'less-loader'
                 ]

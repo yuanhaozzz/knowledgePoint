@@ -1,4 +1,5 @@
 import test from './test'
-import {combineReducers} from 'redux'
+import qa from './qa'
+import { combineReducers } from 'redux'
 
-export default combineReducers({test})
+export default combineReducers({ test, qa })

@@ -9,6 +9,7 @@ import EntryRouterAuth from './components/common/entry-router-auth'
 import { clientStore } from './store/store'
 import { Provider } from 'react-redux'
 
+import './assets/css/reset.less';
 import './app.less'
 class App extends Component {
     constructor(props) {

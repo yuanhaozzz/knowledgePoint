@@ -1,5 +1,5 @@
 let path = require('path')
-
+// 删除console
 let resolvePath = _path => path.resolve(__dirname, _path)
 // 在打包node层 去除多余的插件打包
 let nodeExternals = require('webpack-node-externals');

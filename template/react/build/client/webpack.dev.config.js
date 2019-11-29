@@ -10,7 +10,7 @@ let resolvePath = _path => {
 }
 module.exports = merge(config, {
     entry: {
-        app: ['webpack-hot-middleware/client?noInfo=true&reload=true', resolvePath('../../client/src/main.js')]
+        app: ['webpack-hot-middleware/client?noInfo=true&reload=true', "@babel/polyfill", resolvePath('../../client/src/main.js')]
     },
     mode: 'development',
     devtool: 'sourse-map',

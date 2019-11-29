@@ -8,7 +8,8 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import Routes from '../client/src/router'
 import { serverStore } from '../client/src/store/store'
 import { Provider } from 'react-redux'
-import Environment from '../client/src/utils/environment'
+import { ApiEnvironment } from '../client/src/api/apiHost'
+import { API } from '../client/src/api/api'
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const config = require('../build/client/webpack.dev.config');
@@ -45,15 +46,15 @@ function useStaticRouter (req, store) {
     return toString
 }
 
-app.use((req, res, next) => {
-    // 区分node 线上 预发布 接口环境
-    Environment.modifyMapDomain(req.host)
-    next()
-})
-
+// app.use((req, res, next) => {
+//     // 区分node 线上 预发布 接口环境
+//     Environment.modifyMapDomain(req.host)
+//     next()
+// })
 
 app.get('*', function (req, res) {
-
+    console.log(req.hostname, '==========================================')
+    let api = new ApiEnvironment({ host: req.hostname, API })
     if (dev) {
         const filename = path.join(DIST_DIR, 'template.html');
         compiler.outputFileSystem.readFile(filename, (err, result) => {
@@ -65,6 +66,8 @@ app.get('*', function (req, res) {
     } else {
         html = fs.readFileSync('dist/client/template.html').toString()
     }
+
+
     let store = serverStore()
 
     const matchedRoutes = matchRoutes(Routes.routes, req.path)
@@ -76,7 +79,7 @@ app.get('*', function (req, res) {
         if (item.route.loadData) {
             //那么就执行一次,并将store传进去
             //注意loadData函数调用后需要返回Promise对象
-            promises.push(item.route.loadData(store))
+            promises.push(item.route.loadData(store, api))
         }
     })
 

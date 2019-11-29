@@ -1,11 +1,13 @@
 
 import Test from './modules/test'
+import Live from './modules/live'
+
 // 404页面
 import NotFound from '../views/404'
-
 export default {
     routes: [
         ...Test,
+        ...Live,
         /**
          * 404页面 需放在底部
          */

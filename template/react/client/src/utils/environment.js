@@ -1,20 +1,29 @@
 
 export default {
     DOMAIN: 'master',
-    modifyMapDomain: function(host) {
+    modifyMapDomain: function (host) {
         // 
-        if (global.windows) {
-
+        if (global.window) {
+            host = location.host
         }
         switch (host) {
             case 'localhost':
                 this.DOMAIN = 'rc'
                 break;
+            case '172.17.70.101':
+                this.DOMAIN = 'rc'
+                break;
+            case 'preonlineh5.beiwaiguoji.com':
+                this.DOMAIN = 'rc'
+                break;
+            case 'h5.beiwaiguoji.com':
+                this.DOMAIN = 'master'
+                break;
             default:
+                this.DOMAIN = 'master'
                 break;
         }
-
-
+        return this.DOMAIN
     }
 }
 
@@ -23,7 +32,7 @@ export default {
 //         let {domain} = options
 //         this.domain = domain
 //         this.environment = this.isNoEnvironment()
-        
+
 //     }
 
 //     isNoEnvironment() {
