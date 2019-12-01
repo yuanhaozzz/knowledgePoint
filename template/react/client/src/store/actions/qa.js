@@ -3,7 +3,8 @@ import { HOME_TYPE, HOME_QUESTION_LIST } from '../actionType'
 
 // home
 let QAType;
-export function getQAType (data = '', api) {
+export function getQAType (api) {
+
     let params = {
         action: 'getQAType',
         displayTerminal: 2
@@ -11,7 +12,7 @@ export function getQAType (data = '', api) {
     return dispatch => {
         return api.sendBaseApi(params).then(res => {
             QAType = res.questionTypeList
-            dispatch(setQAType({ homeType: res.questionTypeList }))
+            dispatch(setQAType({ qaHomeList: res.questionTypeList }))
         })
     }
 }
@@ -22,7 +23,7 @@ export function setQAType (payload) {
     }
 }
 
-export function getQaQuestionList (data, api) {
+export function getQaQuestionList (api) {
     let { questionTypeId } = QAType[0].subQuestionTypeVoList[0] ? QAType[0].subQuestionTypeVoList[0] : {};
     let params = {
         action: 'getQaQuestionList',
@@ -33,7 +34,6 @@ export function getQaQuestionList (data, api) {
     }
     return dispatch => {
         return api.sendBaseApi(params).then(res => {
-            console.log(JSON.stringify(res), 'getQaQuestionList==================')
             dispatch(setQaQuestionList({ homeQuestionList: res.qaQuestionList }))
         })
     }

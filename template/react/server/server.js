@@ -9,7 +9,6 @@ import Routes from '../client/src/router'
 import { serverStore } from '../client/src/store/store'
 import { Provider } from 'react-redux'
 import { ApiEnvironment } from '../client/src/api/apiHost'
-import { API } from '../client/src/api/api'
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const config = require('../build/client/webpack.dev.config');
@@ -53,8 +52,7 @@ function useStaticRouter (req, store) {
 // })
 
 app.get('*', function (req, res) {
-    console.log(req.hostname, '==========================================')
-    let api = new ApiEnvironment({ host: req.hostname, API })
+    let api = new ApiEnvironment({ host: req.hostname})
     if (dev) {
         const filename = path.join(DIST_DIR, 'template.html');
         compiler.outputFileSystem.readFile(filename, (err, result) => {
@@ -98,7 +96,7 @@ app.get('*', function (req, res) {
         res.setHeader("Content-Type", "text/html")
         res.send(html);
     }).catch(err => {
-        res.send(err);
+        res.send('错误');
     })
 
 })

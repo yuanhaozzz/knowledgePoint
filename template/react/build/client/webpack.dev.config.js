@@ -13,7 +13,7 @@ module.exports = merge(config, {
         app: ['webpack-hot-middleware/client?noInfo=true&reload=true', "@babel/polyfill", resolvePath('../../client/src/main.js')]
     },
     mode: 'development',
-    devtool: 'sourse-map',
+    devtool: 'cheap-source-map',
     output: {
         filename: '[name].js',
         path: resolvePath('../../dist'),

@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 
+import {connect} from 'react-redux'
+import {getQAType, getQaQuestionList} from '../../../../store/actions/qa'
+
+import {queryUrlParams} from '../../../../utils/common'
 import HomeContent from '../../../../components/page/live/qa/home/Content';
 import Search from '../../../../assets/images/live/search.png';
 import './home.less';
 
 class Home extends Component {
+
+    static getInintalProps (store, api) {
+        return store.dispatch(getQAType(api)).then(res => {
+            return store.dispatch(getQaQuestionList(api)).then(res => {
+                return res
+            })
+        })
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -12,11 +25,18 @@ class Home extends Component {
         };
     }
 
-    /**
+    componentDidMount(){
+        let {qaHomeList, homeQuestionList} = this.props
+        console.log(qaHomeList, 'homeType-----------')
+        console.log(homeQuestionList, 'homeQuestionList-----------')
+    }
+
+     /**
      * 跳转搜索页
      */
     jumpToH5 = () => {
-
+        let { type } = queryUrlParams();
+        location.href = `/live/qa/search?type=${type}`;
     }
 
     /**
@@ -38,7 +58,7 @@ class Home extends Component {
 
         return (
             <div>
-                <HomeContent></HomeContent>
+                <HomeContent {...this.props}></HomeContent>
             </div>
         );
     }
@@ -58,4 +78,15 @@ class Home extends Component {
     }
 }
 
-export default Home;
+let mapStateToProps = state => {
+    let {qaHomeList, homeQuestionList} = state.qa
+    return {
+        qaHomeList,
+        homeQuestionList
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    null
+)(Home);
