@@ -10,7 +10,16 @@ class Loadding extends Component {
     render () {
         return (
             <div className='loadding-wrapper'>
-                {/* <Spin tip='Loading...'></Spin> */}
+                <div>
+                <div className="spinner flex-center">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>加载中</p>
+                </div>
             </div>
         );
     }

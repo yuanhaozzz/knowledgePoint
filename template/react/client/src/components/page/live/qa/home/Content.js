@@ -15,6 +15,7 @@ class Content extends Component {
             questionTypeList: [],
             pageIndexList: [],
             timeout: null,
+            showLoading: true
 
         };
     }

@@ -26,7 +26,7 @@ module.exports = {
             '@': resolvePath('../../client/src')
         },
         // 使用扩展名    当引入文件不写后缀时使用
-        extensions: ['.js', '.jsx', '.less']
+        extensions: ['.js', '.jsx', '.less', ".tsx"]
     },
     optimization: {
         // 最小化器
@@ -39,9 +39,10 @@ module.exports = {
     },
     module: {
         rules: [
+            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
+                use: ["source-map-loader", 'babel-loader'],
                 exclude: /node_modules/
             },
             {
