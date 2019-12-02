@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-import {connect} from 'react-redux'
-import {getQAType, getQaQuestionList} from '../../../../store/actions/qa'
+import { connect } from 'react-redux'
+import { getQAType, getQaQuestionList } from '../../../../store/actions/qa'
 
-import {queryUrlParams} from '../../../../utils/common'
+import { queryUrlParams } from '../../../../utils/common'
 import HomeContent from '../../../../components/page/live/qa/home/Content';
 import Search from '../../../../assets/images/live/search.png';
 import './home.less';
@@ -25,15 +25,13 @@ class Home extends Component {
         };
     }
 
-    componentDidMount(){
-        let {qaHomeList, homeQuestionList} = this.props
-        console.log(qaHomeList, 'homeType-----------')
-        console.log(homeQuestionList, 'homeQuestionList-----------')
+    componentDidMount () {
+        let { qaHomeList, homeQuestionList } = this.props
     }
 
-     /**
-     * 跳转搜索页
-     */
+    /**
+    * 跳转搜索页
+    */
     jumpToH5 = () => {
         let { type } = queryUrlParams();
         location.href = `/live/qa/search?type=${type}`;
@@ -43,9 +41,8 @@ class Home extends Component {
      * 首页搜索
      */
     renderSearch = () => {
-
         return (
-            <div className='header-wrapper'>
+            <div className='header-wrapper flex-center'>
                 <div className='header-search' style={{ 'background': `url(${Search}) no-repeat` }} onClick={this.jumpToH5}>输入你的问题或关键字</div>
             </div>
         );
@@ -57,9 +54,9 @@ class Home extends Component {
     renderTabContent = () => {
 
         return (
-            <div>
+            <Fragment>
                 <HomeContent {...this.props}></HomeContent>
-            </div>
+            </Fragment>
         );
     }
 
@@ -70,7 +67,7 @@ class Home extends Component {
                     {this.renderSearch()}
                 </header>
                 {/* tab选项内容 */}
-                <section>
+                <section className="qa-home-content">
                     {this.renderTabContent()}
                 </section>
             </div>
@@ -79,7 +76,7 @@ class Home extends Component {
 }
 
 let mapStateToProps = state => {
-    let {qaHomeList, homeQuestionList} = state.qa
+    let { qaHomeList, homeQuestionList } = state.qa
     return {
         qaHomeList,
         homeQuestionList

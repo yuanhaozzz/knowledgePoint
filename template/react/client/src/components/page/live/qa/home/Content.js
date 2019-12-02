@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
 import Loading from '../../../../common/loadding'
-import {queryUrlParams} from '../../../../../utils/common'
+import { queryUrlParams } from '../../../../../utils/common'
 import api from '../../../../../api/apiHost'
-import IconGo from '../../../../../assets/images/live/icon-go.png';1
+import IconGo from '../../../../../assets/images/live/icon-go.png'; 1
 import './content.less';
 
 class Content extends Component {
@@ -15,13 +15,13 @@ class Content extends Component {
             questionTypeList: [],
             pageIndexList: [],
             timeout: null,
-      
+
         };
     }
 
-    componentWillMount() {
-        let {questionTypeList} = this.state
-        let {homeQuestionList} = this.props
+    componentWillMount () {
+        let { questionTypeList } = this.state
+        let { homeQuestionList } = this.props
         questionTypeList[0] = homeQuestionList
         this.setState({
             questionTypeList
@@ -30,17 +30,17 @@ class Content extends Component {
 
 
 
-    componentDidMount() {
+    componentDidMount () {
         // 设置问题页数
         this.setPageIndex();
         // 绑定滚动事件
         this.bindScrollEvent();
     }
 
-     /**
-     * 请求数据
-     * @param {boolean} isLoadmore   加载更多
-     */
+    /**
+    * 请求数据
+    * @param {boolean} isLoadmore   加载更多
+    */
     getQuestionList = (isLoadmore = false) => {
         let { type } = queryUrlParams();
         let { tabTitleIndex, tabSecondaryIndex, questionTypeList, pageIndexList } = this.state;
@@ -90,9 +90,9 @@ class Content extends Component {
         });
     }
 
-      /**
-     * 展示loading
-     */
+    /**
+   * 展示loading
+   */
     handleLoading = state => {
         this.setState({
             showLoading: state
@@ -128,9 +128,9 @@ class Content extends Component {
         });
     }
 
-      /**
-     *  记滚动页数
-     */
+    /**
+   *  记滚动页数
+   */
 
     setPageIndex = () => {
         let { tabTitleIndex } = this.state;
@@ -149,23 +149,21 @@ class Content extends Component {
     }
 
 
-       /**
-     * 监听滚动事件
-     */
+    /**
+  * 监听滚动事件
+  */
     bindScrollEvent = () => {
         let srcollWrapper = document.querySelector('.content-list-container');
-        let { timeout } = this.state,
+        let timeout = null,
             that = this;
         // scrollHeight = srcollWrapper.scrollHeight;
         srcollWrapper.addEventListener('scroll', e => {
             let { scrollHeight, clientHeight, scrollTop } = srcollWrapper;
-            if (scrollTop + clientHeight >= scrollHeight) {
+            if (scrollTop + clientHeight >= scrollHeight - 100) {
                 clearTimeout(timeout);
-                this.setState({
-                    timeout: setTimeout(() => {
-                        that.getQuestionList(true);
-                    }, 300)
-                });
+                timeout = setTimeout(() => {
+                    that.getQuestionList(true);
+                }, 300)
             }
         });
     }
@@ -179,7 +177,7 @@ class Content extends Component {
         let { qaHomeList } = this.props;
         return (
             <ul className='content-tab flex-space-between'>
-              {
+                {
                     qaHomeList.map((item, index) => (
                         <li key={index} onClick={() => this.switchTab(index, 'tabTitleIndex')}>
                             <div className={`content-tab-name flex-center ${tabTitleIndex === index && 'content-tab-name-select'}`}>
@@ -205,7 +203,7 @@ class Content extends Component {
             <Fragment>
                 {
                     qaHomeList[tabTitleIndex].subQuestionTypeVoList.map((item, index) => (
-                        <li className={`${tabSecondaryIndex === index && 'content-list-tab-select'}`} onClick={() => this.switchTab(index, 'tabSecondaryIndex')} key={index}>
+                        <li className={`${tabSecondaryIndex === index && 'content-list-tab-select'} font-size-14`} onClick={() => this.switchTab(index, 'tabSecondaryIndex')} key={index}>
                             {item.name}
                             {
                                 tabSecondaryIndex === index && <div className='secondary-triangle'></div>
@@ -226,31 +224,30 @@ class Content extends Component {
         let currentPageData = questionTypeList[tabSecondaryIndex] ? questionTypeList[tabSecondaryIndex].questionList.length : []
         return (
             <Fragment>
-            {
-                questionTypeList.map((item, index) => (
+                {
+                    questionTypeList.map((item, index) => (
 
-                    tabSecondaryIndex === index && <ul key={index}>
-                        {
-                            item.questionList && item.questionList.map((list, ind) => (
-                                <li key={ind} style={{ "background": `url(${IconGo}) no-repeat` }} onClick={() => this.jumpToH5(list)}>
-                                    {list.questionDescription}
-                                </li>
-                            ))
-                        }
-                        {
-                            item.haveNextPage === 1 ? <p>正在加载更多数据</p> : currentPageData > 10 && <p>没有更多数据</p>
-                        }
+                        tabSecondaryIndex === index && <ul key={index}>
+                            {
+                                item.questionList && item.questionList.map((list, ind) => (
+                                    <li key={ind} onClick={() => this.jumpToH5(list)}>
+                                        {list.questionDescription}
+                                    </li>
+                                ))
+                            }
+                            {
+                                item.haveNextPage === 1 ? <p>正在加载更多数据</p> : currentPageData > 10 && <p>没有更多数据</p>
+                            }
 
-                    </ul >
-                ))
+                        </ul >
+                    ))
 
-            }
+                }
             </Fragment>
 
         );
     }
     render () {
-        let { data, tabTitleIndex } = this.state;
         let { showLoading } = this.state;
         return (
             <div className='qa-home-content-wrapper'>
@@ -270,7 +267,7 @@ class Content extends Component {
                             this.renderList()
                         }
                     </div>
-                  
+
                 </section>
                 {
                     showLoading && <Loading ></Loading>

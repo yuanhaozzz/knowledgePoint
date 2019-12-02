@@ -80,17 +80,14 @@ class Search extends Component {
      */
     bindScrollEvent = () => {
         let scrollWrapper = document.querySelector('.search-list');
-        let { scrollTimer } = this.state;
+        let scrollTimer = null;
         scrollWrapper.addEventListener('scroll', e => {
-            console.log(1);
             let { scrollHeight, clientHeight, scrollTop } = scrollWrapper;
-            if (clientHeight + scrollTop >= scrollHeight) {
+            if (clientHeight + scrollTop >= scrollHeight - 100) {
                 clearTimeout(scrollTimer);
-                this.setState({
-                    scrollTimer: setTimeout(() => {
-                        this.getQuestionList(true);
-                    }, 1000)
-                });
+                scrollTimer = setTimeout(() => {
+                    this.getQuestionList(true);
+                }, 1000)
             }
         });
     }
@@ -121,9 +118,9 @@ class Search extends Component {
         });
     }
 
-        /**
-     * 匹配输入的值
-     */
+    /**
+ * 匹配输入的值
+ */
     renderValueList = () => {
         let { questionTypeList } = this.state;
         let currentPageData = questionTypeList ? questionTypeList.length : []
@@ -140,7 +137,7 @@ class Search extends Component {
                     ))
                 }
                 {
-                    questionTypeList.haveNextPage === 1 ? <p className='loadmore-title'>正在加载更多数据</p> : currentPageData > 10&& <p className='loadmore-title'>没有更多数据</p>
+                    questionTypeList.haveNextPage === 1 ? <p className='loadmore-title'>正在加载更多数据</p> : currentPageData > 10 && <p className='loadmore-title'>没有更多数据</p>
                 }
 
             </Fragment>
@@ -153,7 +150,7 @@ class Search extends Component {
         return (
             <div className='qa-search-wrapper'>
                 <section className='search-input'>
-                    <input  placeholder='请输入问题名称'  onChange={this.onChange}  value={searchValue}/>
+                    <input placeholder='请输入问题名称' onChange={this.onChange} value={searchValue} />
                 </section>
                 <section className='search-list' style={{ display: searchValue ? 'block' : 'none' }}>
                     {
