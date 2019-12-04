@@ -1,6 +1,9 @@
 
 import Live from './modules/live'
 
+export const BASE_PATH = '/ipad'
+
+
 // 404页面
 import NotFound from '../views/404'
 export default {

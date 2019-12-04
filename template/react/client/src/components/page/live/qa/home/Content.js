@@ -141,7 +141,7 @@ class Content extends Component {
     jumpToH5 = item => {
         let { questionDescription, answerDescription } = item;
         localStorage.setItem('answerDescription', answerDescription);
-        location.href = `/live/qa/detail?title=${encodeURIComponent(questionDescription)}`;
+        location.href = `/ipad/live/qa/detail?title=${encodeURIComponent(questionDescription)}`;
     }
 
 

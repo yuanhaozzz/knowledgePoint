@@ -34,7 +34,7 @@ class Home extends Component {
     */
     jumpToH5 = () => {
         let { type } = queryUrlParams();
-        location.href = `/live/qa/search?type=${type || 2}`;
+        location.href = `/ipad/live/qa/search?type=${type || 2}`;
     }
 
     /**

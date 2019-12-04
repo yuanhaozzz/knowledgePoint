@@ -12,8 +12,8 @@ module.exports = merge(config, {
     output: {
         filename: 'js/[name].[chunkhash:8].js',
         chunkFilename: 'js/[name].[chunkhash:8].js',
-        path: resolvePath('../../dist/client'),
-        publicPath: '/client'
+        path: resolvePath('../../dist/ipad'),
+        publicPath: '/ipad'
     },
     plugins: [
         new CleanWebpackPlugin()
