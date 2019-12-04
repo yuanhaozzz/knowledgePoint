@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { getQAType, getQaQuestionList } from '../../../../store/actions/qa'
 
+import dsbridge from '../../../../utils/native'
 import { queryUrlParams } from '../../../../utils/common'
 import HomeContent from '../../../../components/page/live/qa/home/Content';
 import Search from '../../../../assets/images/live/search.png';
@@ -21,12 +22,11 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         };
     }
 
     componentDidMount () {
-        let { qaHomeList, homeQuestionList } = this.props
+        dsbridge.goBackAction(1)
     }
 
     /**
@@ -34,7 +34,7 @@ class Home extends Component {
     */
     jumpToH5 = () => {
         let { type } = queryUrlParams();
-        location.href = `/live/qa/search?type=${type}`;
+        location.href = `/live/qa/search?type=${type || 2}`;
     }
 
     /**
@@ -43,7 +43,7 @@ class Home extends Component {
     renderSearch = () => {
         return (
             <div className='header-wrapper flex-center'>
-                <div className='header-search' style={{ 'background': `url(${Search}) no-repeat` }} onClick={this.jumpToH5}>输入你的问题或关键字</div>
+                <div className='header-search' onClick={this.jumpToH5}>请输入你的问题或关键字</div>
             </div>
         );
     }

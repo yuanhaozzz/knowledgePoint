@@ -1,5 +1,7 @@
 let path = require('path')
 let config = require('./webpack.base.config')
+// 清除dist文件
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 let merge = require('webpack-merge')
 let resolvePath = _path => {
@@ -8,9 +10,12 @@ let resolvePath = _path => {
 module.exports = merge(config, {
     mode: 'production',
     output: {
-        filename: 'js/[name].[hash:8].js',
+        filename: 'js/[name].[chunkhash:8].js',
         chunkFilename: 'js/[name].[chunkhash:8].js',
         path: resolvePath('../../dist/client'),
         publicPath: '/client'
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin()
+    ]
 })

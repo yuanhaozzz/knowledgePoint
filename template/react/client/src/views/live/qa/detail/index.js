@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {queryUrlParams} from '../../../../utils/common'
+
+import { queryUrlParams } from '../../../../utils/common'
 import './detail.less';
 class Detail extends Component {
 
@@ -12,7 +13,7 @@ class Detail extends Component {
     }
 
     componentDidMount () {
-      this.setInitData()
+        this.setInitData()
     }
 
     /**
@@ -20,7 +21,7 @@ class Detail extends Component {
      */
     setInitData = () => {
         let htmlFragment = localStorage.getItem('answerDescription') || '';
-        let {title} = queryUrlParams()
+        let { title } = queryUrlParams()
         this.setState({
             htmlFragment,
             qaDetailTitle: decodeURIComponent(title)

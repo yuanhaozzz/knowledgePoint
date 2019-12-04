@@ -1,46 +1,55 @@
 
+ .qa-wrapper, .qa-home-content{
+    height: 100%;
+}
+
 .qa-wrapper{
+    padding: 0;
     .header-wrapper{
-        margin-top: 15px;
-        margin-bottom: 23px;
+        padding: 40px 32px 0;
+        margin-bottom: 50px;
         .header-search{
-            width:555px;
-            height:40px;
+            width: 100%;
+            padding:0 32px;
+            height:88px;
             background-color:rgba(247,247,247,1) !important;
             border-radius:9px;
-            margin: 0 auto;
             padding-left: 21px;
             line-height: 40px;
-            font-size:16px;
+            font-size:14px;
             color:rgba(210,210,210,1);
             background: url(/static/images/live/search.png) no-repeat;
-            background-size: 23px 23px !important;
+            background-size: 34px 34px !important;
             background-position: 95% 50% !important;
+            box-sizing: border-box;
+            line-height: 88px;
         }
     }
 }
 
-
-@media only screen  and (min-device-width : 0px)  and (max-device-width : 767px){  
+/* 判断ipad */
+@media only screen and (min-width: 600px) {
     body{
-        .qa-wrapper, .qa-home-content{
-            height: 100%;
-        }
         .qa-wrapper{
-            padding: 0;
+            padding-top: 13px;
             .header-wrapper{
-                padding: 0 32px;
-                margin-bottom: 50px;
+                padding: 0;
+                margin-top: 15px;
+                margin-bottom: 23px;
                 .header-search{
-                    width: 100%;
-                    margin: 0;
-                    height: 88px;
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    font-size: 16px;
-                    padding-left: 32px;
-                    background-size: 34px 34px !important;
+                    width:555px;
+                    height:40px;
+                    background-color:rgba(247,247,247,1) !important;
+                    border-radius:9px;
+                    margin: 0 auto;
+                    padding-left: 21px;
+                    line-height: 40px;
+                    font-size:16px;
+                    color:rgba(210,210,210,1);
+                    background: url(/static/images/live/search.png) no-repeat;
+                    background-size: 13px 14px !important;
+                    background-position: 95% 50% !important;
+                    box-sizing: border-box;
                 }
             }
         }

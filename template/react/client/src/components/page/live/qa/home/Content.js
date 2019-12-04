@@ -15,23 +15,18 @@ class Content extends Component {
             questionTypeList: [],
             pageIndexList: [],
             timeout: null,
-            showLoading: true
+            showLoading: false
 
         };
     }
 
-    componentWillMount () {
+    componentDidMount () {
         let { questionTypeList } = this.state
         let { homeQuestionList } = this.props
         questionTypeList[0] = homeQuestionList
         this.setState({
             questionTypeList
         })
-    }
-
-
-
-    componentDidMount () {
         // 设置问题页数
         this.setPageIndex();
         // 绑定滚动事件

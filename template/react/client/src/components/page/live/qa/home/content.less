@@ -1,9 +1,15 @@
+.qa-wrapper{
+    height: 100%;
+    background-color: #fff;
+    overflow: hidden;
+}
 .qa-home-content-wrapper{
+    height: 100%;
     .content-tab{
-        padding: 0 90px;
         box-shadow:0px 3px 2px 0px rgba(100,122,128,0.13);
+        justify-content: space-around;
         .content-tab-name{
-            font-size:20px;
+            font-size:13px;
             color:rgba(51,51,51,1);
             flex-direction: column;
         }
@@ -22,114 +28,161 @@
         }
     }
     .content-list{
-        margin-top: 21px;
-        padding-left: 56px;
-        padding-right: 90px;
-        .content-list-tab{
-            height: 384px;
-            width: 150px;
-            text-align: center;
-            overflow-y: scroll;
-            padding-top: 15px;
-            justify-content: flex-start !important;
-            li{
-                width: 100%;
-                color:rgba(85,85,85,1);
-                font-size:14px;
-                line-height: 30px;
-                margin-bottom: 20px;
-                position: relative;
+            margin-top: 21px;
+            // padding-left: 56px;
+            // padding-right: 90px;
+            align-items: flex-start;
+            margin-top: 35px;
+            height: 100%;
+            .content-list-tab{
+                height: 70%;
+                text-align: center;
+                overflow-y: scroll;
+                justify-content: flex-start !important;
+                padding-top: 15px;
+                li{
+                    color:rgba(85,85,85,1);
+                    font-size:14px;
+                    line-height: 30px;
+                    margin-bottom: 20px;
+                    position: relative;
+                    padding: 0 20px;
+                    margin-bottom: 80px;
+                }
+                .content-list-tab-select{
+                    color:rgba(6,191,236,1);
+                }
+                .secondary-triangle{
+                    height: 1px;
+                    border: 10px solid rgba(247,247,247,1);;
+                    border-top: 10px solid rgba(0, 0, 0, 0) ;
+                    border-left: 10px solid rgba(0, 0, 0, 0) ;
+                    border-bottom: 10px solid rgba(0, 0, 0, 0) ;
+                    position: absolute;
+                    right: -0px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
             }
-            .content-list-tab-select{
+            .content-list-container{
+                flex: 1;
+                height: 70%;
+                background:rgba(247,247,247,1);
+                border-radius:9px;
+                padding: 16px 0px;
+                overflow-y: scroll;
+                box-sizing: border-box;
+                margin-right: 40px;
+                ul{
+                    p{
+                        text-align: center;
+                        font-size: 14px;
+                        color: #b2b2b2;
+                    }
+                }
+                li{
+                    font-size:14px;
+                    color:rgba(85,85,85,1);
+                    margin-bottom: 15px;
+                    background: url(/static/images/live/icon-go.png) no-repeat;
+                    background-size: 14px 20px;
+                    background-position: 95% 50% !important;
+                    padding: 0 30px;
+                    margin-bottom: 60px;
+                }
+            }
+        }
+ }
+
+/* 判断ipad */
+@media only screen and (min-width: 600px){
+   body{
+    .qa-home-content-wrapper{
+        .content-tab{
+            padding: 0 90px;
+            box-shadow:0px 3px 2px 0px rgba(100,122,128,0.13);
+            .content-tab-name{
+                font-size:20px;
+                color:rgba(51,51,51,1);
+                flex-direction: column;
+            }
+            .content-tab-name-select{
                 color:rgba(6,191,236,1);
             }
-            .secondary-triangle{
-                height: 1px;
-                border: 10px solid rgba(247,247,247,1);;
-                border-top: 10px solid rgba(0, 0, 0, 0) ;
-                border-left: 10px solid rgba(0, 0, 0, 0) ;
-                border-bottom: 10px solid rgba(0, 0, 0, 0) ;
-                position: absolute;
-                right: -0px;
-                top: 50%;
-                transform: translateY(-50%);
-
+            .content-tab-line, .content-tab-empty{
+                width:84px;
+                height:2px;
+                background:rgba(6,191,236,1);
+                border-radius:3px;
+                margin-top: 12px;
+            }
+            .content-tab-empty{
+                background:none;
             }
         }
-        .content-list-container{
-            flex: 1;
-            height: 380px;
-            background:rgba(247,247,247,1);
-            border-radius:9px;
-            padding: 16px 0px;
-            overflow-y: scroll;
-            ul{
-                p{
-                    text-align: center;
-                    font-size: 14px;
-                    color: #b2b2b2;
-                }
-            }
-            li{
-                font-size:14px;
-                color:rgba(85,85,85,1);
-                margin-bottom: 15px;
-                background: url(/static/images/live/icon-go.png) no-repeat;
-                background-size: 4px 6px;
-                background-position: 95% 50% !important;
-                padding: 0 22px;
-            }
-        }
-    }
-}
-@media only screen  and (min-device-width : 0px)  and (max-device-width : 767px){  
-    body{
-        .qa-wrapper{
-            height: 100%;
-            background-color: #fff;
-            overflow: hidden;
-        }
-        .qa-home-content-wrapper{
-            height: 100%;
-            .content-tab{
-                padding: 0 0px;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
+        .content-list{
+            margin-top: 21px;
+            padding-left: 56px;
+            padding-right: 90px;
+            .content-list-tab{
+                height: 384px;
+                width: 150px;
+                text-align: center;
+                overflow-y: scroll;
+                padding-top: 15px;
+                justify-content: flex-start !important;
                 li{
-                    .content-tab-name{
+                    width: 100%;
+                    color:rgba(85,85,85,1);
+                    font-size:20px;
+                    line-height: 30px;
+                    margin-bottom: 20px;
+                    position: relative;
+                }
+                .content-list-tab-select{
+                    color:rgba(6,191,236,1);
+                }
+                .secondary-triangle{
+                    height: 1px;
+                    border: 10px solid rgba(247,247,247,1);;
+                    border-top: 10px solid rgba(0, 0, 0, 0) ;
+                    border-left: 10px solid rgba(0, 0, 0, 0) ;
+                    border-bottom: 10px solid rgba(0, 0, 0, 0) ;
+                    position: absolute;
+                    right: -0px;
+                    top: 50%;
+                    transform: translateY(-50%);
+    
+                }
+            }
+            .content-list-container{
+                flex: 1;
+                height: 380px;
+                background:rgba(247,247,247,1);
+                border-radius:9px;
+                padding: 16px 0px;
+                overflow-y: scroll;
+                // padding-bottom: 80px;
+                box-sizing: border-box;
+                ul{
+                    p{
+                        text-align: center;
                         font-size: 14px;
+                        color: #b2b2b2;
                     }
+                }
+                li{
+                    font-size:14px;
+                    color:rgba(85,85,85,1);
+                    margin-bottom: 15px;
+                    background: url(/static/images/live/icon-go.png) no-repeat;
+                    background-size: 4px 6px;
+                    background-position: 95% 50% !important;
+                    padding: 0 22px;
                 }
             }
-            .content-list{
-                height: 100%;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                margin-top: 38px;
-                .content-list-tab{
-                    width: 170px;
-                    height: 75%;
-                    padding-top: 45px;
-                    li{
-                        margin-bottom: 80px;
-                        letter-spacing:3px
-                    }
-                }
-                .content-list-container{
-                    margin-right: 30px;
-                    height: 70%;
-                    padding: 48px 0px;
-                    li{
-                        margin-bottom: 60px;
-                        padding: 0px 44px;
-                        letter-spacing:3px;
-                        background-size: 14px 20px;
-                    }
-                }
-            }
-         }
+        }
     }
+   }
 }
+

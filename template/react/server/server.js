@@ -9,17 +9,24 @@ import Routes from '../client/src/router'
 import { serverStore } from '../client/src/store/store'
 import { Provider } from 'react-redux'
 import { ApiEnvironment } from '../client/src/api/apiHost'
+
+const path = require('path')
+const fs = require('fs')
+const compression = require('compression');
+
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const config = require('../build/client/webpack.dev.config');
 const compiler = webpack(config);
-let fs = require('fs')
-let express = require('express')
-const app = express();
-let dev = process.env.NODE_ENV === 'development'
-let path = require('path')
 const DIST_DIR = path.join(__dirname, "../dist")
+const CATCH_TIME = 60 * 1000 * 60 * 24 * 30;
+const express = require('express')
+const app = express();
+
+let dev = process.env.NODE_ENV === 'development'
 let html;
+
+
 
 if (dev) {
     app.use(webpackDevMiddleware(compiler, {
@@ -29,8 +36,10 @@ if (dev) {
     }));
     app.use(require("webpack-hot-middleware")(compiler));
 }
+app.use(compression());
+app.use(express.static('dist', { maxAge: CATCH_TIME }))
 
-app.use(express.static('dist'))
+// app.use(express.static(path.resolve(__dirname, './dist'), { maxAge: CACHETIME }))
 
 function useStaticRouter (req, store) {
     let toString = renderToString(
@@ -45,14 +54,9 @@ function useStaticRouter (req, store) {
     return toString
 }
 
-// app.use((req, res, next) => {
-//     // 区分node 线上 预发布 接口环境
-//     Environment.modifyMapDomain(req.host)
-//     next()
-// })
 
 app.get('*', function (req, res) {
-    let api = new ApiEnvironment({ host: req.hostname})
+    let api = new ApiEnvironment({ host: req.hostname })
     if (dev) {
         const filename = path.join(DIST_DIR, 'template.html');
         compiler.outputFileSystem.readFile(filename, (err, result) => {
