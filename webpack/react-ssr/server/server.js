@@ -30,9 +30,6 @@ if (dev) {
 app.use(cookieParser());
 app.use(express.static('dist'));
 
-app.use(logger('dev'));
-app.use(logger({ stream: accessLogger }));
-
 //注意这里要换成*来匹配
 app.get('*', async function (req, res) {
     // 同一个端 返回的实例一样

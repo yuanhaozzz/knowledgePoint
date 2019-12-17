@@ -1,14 +1,20 @@
 
 import React, { Component } from 'react'
-
+import { Button, Icon, Input } from 'antd';
 class Home extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
     }
 
     render () {
         return (
-            <div>home</div>
+            <div>
+                dasdasd
+                <Input.Password placeholder="input password" allowClear />
+                <Icon type="step-forward" />
+                <Icon type="pic-right" />
+                <Icon type="profile" />
+            </div>
         )
     }
 }
