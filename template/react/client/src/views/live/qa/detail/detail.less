@@ -1,7 +1,28 @@
 .detail-wrapper{
-    width: 630px;
+    padding-top: 28px;
+    padding: 40px 50px;
+    .detail-title{
+        font-size:16px;
+        color:rgba(45,201,238,1);
+        margin-bottom: 16px;
+    }
+    .detail-content{
+        padding: 35px;
+        background:rgba(247,247,247,1);
+        border-radius:9px;
+        margin-bottom: 40px;
+        img{
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    }
+}
+
+/* 判断ipad */
+@media only screen and (orientation : landscape){
+    .detail-wrapper{
     padding-top: 30px;
-    margin: 0 auto;
+    padding: 40px 100px;
     .detail-title{
         font-size:16px;
         color:rgba(45,201,238,1);
@@ -12,8 +33,6 @@
         background:rgba(247,247,247,1);
         border-radius:9px;
         margin-bottom: 40px;
-        img{
-            width: 200px !important;
-        }
     }
+}
 }

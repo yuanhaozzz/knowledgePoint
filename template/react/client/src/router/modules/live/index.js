@@ -3,10 +3,11 @@ import qaHome from '../../../views/live/qa/home'
 import qaSearch from '../../../views/live/qa/search'
 import qaDetail from '../../../views/live/qa/detail'
 
+import { BASE_PATH } from '../../index'
 
 export default [
     {
-        path: '/live/qa/home',
+        path: BASE_PATH + '/live/qa/home',
         component: qaHome,
         meta: {
             title: '用户帮助中心'
@@ -14,14 +15,14 @@ export default [
         loadData: qaHome.getInintalProps
     },
     {
-        path: '/live/qa/search',
+        path: BASE_PATH + '/live/qa/search',
         component: qaSearch,
         meta: {
             title: '用户帮助中心'
         }
     },
     {
-        path: '/live/qa/detail',
+        path: BASE_PATH + '/live/qa/detail',
         component: qaDetail,
         meta: {
             title: '帮助'

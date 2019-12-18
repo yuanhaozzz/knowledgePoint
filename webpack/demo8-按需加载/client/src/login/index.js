@@ -2,19 +2,21 @@
 import React, { Component } from 'react'
 
 class Login extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
     }
 
-    componentDidMount() {
+    componentDidMount () {
         // alert(11)
     }
 
-    
+
 
     render () {
         return (
-            <div>loginasdas</div>
+            <div>
+                {/* <Icon type="fullscreen-exit" /> */}
+            </div>
         )
     }
 }

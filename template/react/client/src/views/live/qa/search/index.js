@@ -17,6 +17,12 @@ class Search extends Component {
     }
 
     componentDidMount () {
+        console.log(this.refs)
+        // setTimeout(() => {
+        //     this.refs.searchInput.focus();
+        // }, 300);
+        let autoFocus = document.querySelector('.search-input-auto-focus')
+        autoFocus.focus()
         this.bindScrollEvent();
     }
 
@@ -72,7 +78,7 @@ class Search extends Component {
     jumpToH5 = item => {
         let { questionDescription, answerDescription } = item;
         localStorage.setItem('answerDescription', answerDescription);
-        location.href = `/live/qa/detail?title=${encodeURIComponent(questionDescription)}`;
+        location.href = `/ipad/live/qa/detail?title=${encodeURIComponent(questionDescription)}`;
     }
 
     /**
@@ -150,7 +156,7 @@ class Search extends Component {
         return (
             <div className='qa-search-wrapper'>
                 <section className='search-input'>
-                    <input placeholder='请输入问题名称' onChange={this.onChange} value={searchValue} />
+                    <input placeholder='请输入你的问题或关键字' onChange={this.onChange} value={searchValue} className="search-input-auto-focus" />
                 </section>
                 <section className='search-list' style={{ display: searchValue ? 'block' : 'none' }}>
                     {

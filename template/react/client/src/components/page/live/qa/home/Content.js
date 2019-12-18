@@ -15,23 +15,18 @@ class Content extends Component {
             questionTypeList: [],
             pageIndexList: [],
             timeout: null,
-            showLoading: true
+            showLoading: false
 
         };
     }
 
-    componentWillMount () {
+    componentDidMount () {
         let { questionTypeList } = this.state
         let { homeQuestionList } = this.props
         questionTypeList[0] = homeQuestionList
         this.setState({
             questionTypeList
         })
-    }
-
-
-
-    componentDidMount () {
         // 设置问题页数
         this.setPageIndex();
         // 绑定滚动事件
@@ -146,7 +141,7 @@ class Content extends Component {
     jumpToH5 = item => {
         let { questionDescription, answerDescription } = item;
         localStorage.setItem('answerDescription', answerDescription);
-        location.href = `/live/qa/detail?title=${encodeURIComponent(questionDescription)}`;
+        location.href = `/ipad/live/qa/detail?title=${encodeURIComponent(questionDescription)}`;
     }
 
 

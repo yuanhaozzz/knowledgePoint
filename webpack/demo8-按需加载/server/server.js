@@ -14,7 +14,6 @@ const app = express();
 const config = require('../build/client/webpack.client.dev');
 const compiler = webpack(config);
 var cookieParser = require('cookie-parser');
-let html = fs.readFileSync('dist/h5/live/index.html', 'utf-8');
 
 let dev = process.env.NODE_ENV === 'development';
 
@@ -31,6 +30,7 @@ app.use(express.static('dist'));
 
 //注意这里要换成*来匹配
 app.get('*', async function (req, res) {
+    let html = fs.readFileSync('dist/h5/live/index.html', 'utf-8');
     // 同一个端 返回的实例一样
     let store = createServerStore();
     // 返回匹配路由的数组。

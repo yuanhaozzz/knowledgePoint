@@ -350,7 +350,9 @@ class Login extends Component {
         return (
             <Fragment>
                 <div className='login-wrapper'>
+                    <Icon type="play-square" />123123
                     <div className='login-wrapper-layout'>
+                        奥术大师大所其未完成
                         <div className='login-logo'></div>
                         {
                             loginType === 1 && <Account handleSubmit={this.handleSubmit} switchMethod={this.switchMethod} {...this.props} info={this.state.info} ></Account>

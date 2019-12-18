@@ -1,8 +1,10 @@
 .qa-search-wrapper{
     height: 100%;
     background-color: #fff;
+    margin-top: 44px;
+    box-sizing: border-box;
     .search-input, .search-list{
-        width: 555px;
+        width:686px;
         margin: auto;
         margin-bottom: 7px;
         border-radius:9px;
@@ -14,14 +16,23 @@
     .search-input{
         margin-bottom: 20px;
         input{
-            background:rgba(247,247,247,1);
             border-radius:9px;
             width: 100% !important;
-            height: 30px;
-            font-size: 13px;
+            font-size: 14px;
             border: none;
             outline: none;
-            padding-left: 10px;
+            padding-left: 21px;
+            background: url(/static/images/live/search.png) no-repeat;
+            background-size: 34px 34px !important;
+            background-position: 95% 50% !important;
+            background-color:rgba(247,247,247,1);
+            box-sizing: border-box;
+            height: 88px;
+
+
+        }
+        input::-webkit-input-placeholder { 
+            color: #d2d2d2;
         }
     }
     .search-list{
@@ -33,9 +44,10 @@
         overflow-y: scroll;
     }
     .search-list-item{
-        font-size:12px;
+        font-size:14px;
         color:rgba(51,51,51,1);
-        margin-bottom: 15px;
+        margin-bottom: 45px;
+        line-height: 40px;
     }
     .search-list-item:last-child{
         margin-bottom: 0px;
@@ -46,27 +58,30 @@
 }
 
 
-
-@media only screen  and (min-device-width : 0px)  and (max-device-width : 767px){  
+/* 判断ipad */
+@media only screen and (min-width: 600px){
     body{
         .qa-search-wrapper{
+            margin-top: 28px;
             .search-input, .search-list{
-                width: 650px;
+                width:555px;
                 margin-bottom:27px;
                 input, .am-list-line, .am-list-item{
-                    background:rgba(247,247,247,1);
+                    background-color:rgba(247,247,247,1);
                 }
             }
             .search-input{
                 input{
-                    height: 60px;
+                    height:41px;
+                    background-size: 13px 14px !important;
+                    font-size: 16px;
                 }
             }
             .search-list{
                 height: 80%;
                 p{
                     margin-bottom: 40px;
-                    letter-spacing:3px;
+                    letter-spacing:1px;
                     font-size: 14px
                 }
             }

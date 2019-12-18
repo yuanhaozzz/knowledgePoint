@@ -9,7 +9,7 @@
     "dev": "cross-env NODE_ENV=development node server/devServer",
     "build:server": "webpack --config build/server/webpack.prod.config.js",
     "build": "npm run build:client && npm run build:server",
-    "prod": "node dist/server/server.js"
+    "prod": "pm2 restart ./process.json"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "@babel/register": "^7.7.4",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.5",
     "core-js": "^3.1.4",
     "cross-env": "^6.0.3",
@@ -57,6 +58,7 @@
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
     "axios": "^0.19.0",
+    "dsbridge": "^3.1.4",
     "express": "^4.17.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

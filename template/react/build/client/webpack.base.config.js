@@ -4,16 +4,15 @@ let path = require('path')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 // 复制文件/文件夹
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// 删除console
 // 打包css
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // 缩小js
 const TerserPlugin = require('terser-webpack-plugin');
 // css优化
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 // 当前开发环境
 const devMode = process.env.NODE_ENV !== 'production'
-console.log(devMode)
 let resolvePath = _path => {
     return path.resolve(__dirname, _path)
 }
@@ -89,8 +88,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: devMode ? 'css/[name].css' : 'css/[name].[hash:8].css',
-            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash:8].css',
+            filename: devMode ? 'css/[name].css' : 'css/[name].[contenthash:8].css',
+            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[contenthash:8].css',
         })
     ]
 

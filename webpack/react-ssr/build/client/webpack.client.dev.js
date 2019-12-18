@@ -37,17 +37,17 @@ module.exports = merge(config, {
                     path.resolve(__dirname, '../../client'),
                     path.resolve(__dirname, '../../server')
                 ],
-                use: [
-                    {
-                        loader: 'eslint-loader',
-                        options: {
-                            configFile: path.resolve('.eslintrc'),
-                            eslint: {
-                                configFile: path.resolve(__dirname, '.eslintrc')
-                            }
-                        }
-                    }
-                ]
+                // use: [
+                //     {
+                //         loader: 'eslint-loader',
+                //         options: {
+                //             configFile: path.resolve('.eslintrc'),
+                //             eslint: {
+                //                 configFile: path.resolve(__dirname, '.eslintrc')
+                //             }
+                //         }
+                //     }
+                // ]
             }
         ]
     },
